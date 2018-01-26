@@ -18,4 +18,11 @@ public class VirtualPetTest {
 		int thirst = underTest.thirst;
 		Assert.assertEquals(20, thirst);
 	}
+	
+	@Test
+	public void shouldHaveWasteAttribute() {
+		VirtualPet underTest = new VirtualPet();
+		int waste = underTest.waste;
+		Assert.assertEquals(20, waste);;
+	}
 }
