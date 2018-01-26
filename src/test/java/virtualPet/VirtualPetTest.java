@@ -25,4 +25,11 @@ public class VirtualPetTest {
 		int waste = underTest.waste;
 		Assert.assertEquals(20, waste);;
 	}
+	
+	@Test
+	public void shouldHaveBoredomAttribute() {
+		VirtualPet underTest = new VirtualPet();
+		int boredom = underTest.boredom;
+		Assert.assertEquals(20, boredom);
+	}
 }
