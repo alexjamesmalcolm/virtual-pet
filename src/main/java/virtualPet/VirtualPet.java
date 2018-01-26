@@ -27,7 +27,7 @@ public class VirtualPet {
 	}
 
 	public void feed() {
-		thirst = hunger / _HUNGER_TO_THIRST_;
+		thirst += hunger / _HUNGER_TO_THIRST_;
 		if (waste + hunger / _HUNGER_TO_WASTE_ <= 100) {
 			waste += hunger / _HUNGER_TO_WASTE_;
 		} else {
