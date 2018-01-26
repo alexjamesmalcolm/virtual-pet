@@ -2,21 +2,19 @@ package virtualPet;
 
 public class VirtualPet {
 
-	public static final int _FOOD_TO_THIRST_ = 8;
-	public static final int _FOOD_TO_WASTE_ = 2;
-	public static final int _WATER_TO_WASTE_ = 2;
+	public static final int _HUNGER_TO_THIRST_ = 8;
+	public static final int _HUNGER_TO_WASTE_ = 2;
+	public static final int _THIRST_TO_WASTE_ = 2;
 	public int hunger = 20;
 	public int thirst = 20;
 	public int waste = 20;
 	public int boredom = 20;
-	public int sickness = 10;
-
-	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom, int inputSickness) {
+	
+	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
 		this.thirst = inputThirst;
 		this.hunger = inputHunger;
 		this.waste = inputWaste;
 		this.boredom = inputBoredom;
-		this.sickness = inputSickness;
 	}
 
 	public VirtualPet() {
@@ -29,8 +27,8 @@ public class VirtualPet {
 	}
 
 	public void feed() {
-		thirst = hunger / _FOOD_TO_THIRST_;
-		waste = hunger / _FOOD_TO_WASTE_;
+		thirst = hunger / _HUNGER_TO_THIRST_;
+		waste += hunger / _HUNGER_TO_WASTE_;
 		if (hunger < 80) {
 			hunger = 0;
 		} else {
@@ -39,7 +37,7 @@ public class VirtualPet {
 	}
 
 	public void water() {
-		waste += thirst / _WATER_TO_WASTE_;
+		waste += thirst / _THIRST_TO_WASTE_;
 		if (thirst < 80) {
 			thirst = 0;
 		} else {
