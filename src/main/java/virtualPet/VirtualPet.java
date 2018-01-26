@@ -34,4 +34,8 @@ public class VirtualPet {
 		}
 	}
 
+	public void water() {
+		thirst = 0;
+	}
+
 }
