@@ -123,4 +123,13 @@ public class VirtualPetTest {
 		int thirst = underTest.thirst;
 		Assert.assertEquals(0, thirst);
 	}
+
+	@Test
+	public void shouldHaveWaterDecreaseThirstBy80() {
+		int inputThirst = 100;
+		VirtualPet underTest = new VirtualPet(0, inputThirst, 0, 0, 0);
+		underTest.water();
+		int thirst = underTest.thirst;
+		Assert.assertEquals(20, thirst);
+	}
 }

@@ -35,7 +35,11 @@ public class VirtualPet {
 	}
 
 	public void water() {
-		thirst = 0;
+		if (thirst < 80) {
+			thirst = 0;
+		} else {
+			thirst -= 80;
+		}
 	}
 
 }
