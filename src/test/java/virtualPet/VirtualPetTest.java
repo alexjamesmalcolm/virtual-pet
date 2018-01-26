@@ -11,4 +11,11 @@ public class VirtualPetTest {
 		int hunger = underTest.hunger;
 		Assert.assertEquals(20, hunger);
 	}
+	
+	@Test
+	public void shouldHaveThirstAttribute() {
+		VirtualPet underTest = new VirtualPet();
+		int thirst = underTest.thirst;
+		Assert.assertEquals(20, thirst);
+	}
 }
