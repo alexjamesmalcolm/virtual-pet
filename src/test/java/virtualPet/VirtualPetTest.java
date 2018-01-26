@@ -32,4 +32,12 @@ public class VirtualPetTest {
 		int boredom = underTest.boredom;
 		Assert.assertEquals(20, boredom);
 	}
+	
+	@Test
+	public void shouldHaveTickIncreaseBoredom() {
+		VirtualPet underTest = new VirtualPet();
+		underTest.tick();
+		int boredom = underTest.boredom;
+		Assert.assertEquals(21, boredom);
+	}
 }
