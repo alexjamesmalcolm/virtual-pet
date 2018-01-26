@@ -94,5 +94,14 @@ public class VirtualPetTest {
 	}
 	
 	@Test
-	public void shouldHaveFeedIncreaseThirstWhenHungerIs100() {}
+	public void shouldHaveFeedIncreaseThirstWhenHungerIs100() {
+		int inputHunger = 100;
+		int inputThirst = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0, 0);
+		underTest.feed();
+		int thirst = underTest.thirst;
+		int hunger = underTest.hunger;
+		Assert.assertEquals(inputHunger / 3, thirst);
+		Assert.assertEquals(20, hunger);
+	}
 }

@@ -26,12 +26,12 @@ public class VirtualPet {
 	}
 
 	public void feed() {
+		thirst = hunger / 3;
 		if (hunger < 80) {
 			hunger = 0;
 		} else {
 			hunger -= 80;
 		}
-		thirst = 26;
 	}
 
 }
