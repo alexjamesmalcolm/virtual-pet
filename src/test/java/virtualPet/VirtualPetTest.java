@@ -50,5 +50,10 @@ public class VirtualPetTest {
 	}
 	
 	@Test
-	public void shouldHaveTickIncreaseThirst() {}
+	public void shouldHaveTickIncreaseThirst() {
+		VirtualPet underTest = new VirtualPet();
+		underTest.tick();
+		int thirst = underTest.thirst;
+		Assert.assertEquals(21, thirst);
+	}
 }
