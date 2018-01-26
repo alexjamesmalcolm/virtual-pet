@@ -39,7 +39,7 @@ public class VirtualPet {
 	}
 
 	public void water() {
-		waste = thirst / _WATER_TO_WASTE_;
+		waste += thirst / _WATER_TO_WASTE_;
 		if (thirst < 80) {
 			thirst = 0;
 		} else {

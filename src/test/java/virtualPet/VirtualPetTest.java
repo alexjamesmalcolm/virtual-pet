@@ -156,4 +156,24 @@ public class VirtualPetTest {
 		int waste = underTest.waste;
 		Assert.assertEquals(inputThirst / _WATER_TO_WASTE_, waste);
 	}
+
+	@Test
+	public void shouldHaveWaterIncreaseWasteWhenThirstIs10() {
+		int inputThirst = 10;
+		int inputWaste = 0;
+		VirtualPet underTest = new VirtualPet(0, inputThirst, inputWaste, 0, 0);
+		underTest.water();
+		int waste = underTest.waste;
+		Assert.assertEquals(inputThirst / _WATER_TO_WASTE_, waste);
+	}
+
+	@Test
+	public void shouldHaveWaterIncreaseWasteWhenThirstIs10AndWasteIs40() {
+		int inputThirst = 10;
+		int inputWaste = 40;
+		VirtualPet underTest = new VirtualPet(0, inputThirst, inputWaste, 0, 0);
+		underTest.water();
+		int waste = underTest.waste;
+		Assert.assertEquals(inputWaste + inputThirst / _WATER_TO_WASTE_, waste);
+	}
 }
