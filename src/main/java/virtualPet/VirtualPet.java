@@ -9,7 +9,7 @@ public class VirtualPet {
 	public int thirst = 20;
 	public int waste = 20;
 	public int boredom = 20;
-	
+
 	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
 		this.thirst = inputThirst;
 		this.hunger = inputHunger;
@@ -28,7 +28,11 @@ public class VirtualPet {
 
 	public void feed() {
 		thirst = hunger / _HUNGER_TO_THIRST_;
-		waste += hunger / _HUNGER_TO_WASTE_;
+		if (waste + hunger / _HUNGER_TO_WASTE_ <= 100) {
+			waste += hunger / _HUNGER_TO_WASTE_;
+		} else {
+			waste = 100;
+		}
 		if (hunger < 80) {
 			hunger = 0;
 		} else {

@@ -185,11 +185,15 @@ public class VirtualPetTest {
 		Assert.assertEquals(inputWaste + inputHunger / _HUNGER_TO_WASTE_, waste);
 	}
 	
-	// @Test
-	// public void
-	// shouldHaveFeedNotIncreaseWasteOrDecreaseHungerWhenWasteIs90AndHungerIs90() {
-	// int inputHunger = 90;
-	// int inputWaste = 90;
-	// VirtualPet underTest = new VirtualPet(inputHunger,0,inputWaste,0);
-	// }
+	@Test
+	public void shouldHaveFeedNotIncreaseWasteOrDecreaseHungerWhenWasteIs90AndHungerIs90() {
+		int inputHunger = 90;
+		int inputWaste = 90;
+		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
+		underTest.feed();
+		int waste = underTest.waste;
+		Assert.assertEquals(100, waste);
+	}
+	
+	
 }
