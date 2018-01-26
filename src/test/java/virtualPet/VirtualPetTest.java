@@ -56,4 +56,21 @@ public class VirtualPetTest {
 		int thirst = underTest.thirst;
 		Assert.assertEquals(21, thirst);
 	}
+	
+	@Test
+	public void shouldHaveCustomAttributes() {
+		int inputThirst = 80;
+		int inputHunger = 60;
+		int inputBoredom = 70;
+		int inputWaste = 30;
+		int inputSickness = 10;
+		
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, inputWaste, inputBoredom, inputSickness);
+		
+		Assert.assertEquals(inputThirst, underTest.thirst);
+		Assert.assertEquals(inputHunger, underTest.hunger);
+		Assert.assertEquals(inputBoredom, underTest.boredom);
+		Assert.assertEquals(inputWaste, underTest.waste);
+		Assert.assertEquals(inputSickness, underTest.sickness);
+	}
 }
