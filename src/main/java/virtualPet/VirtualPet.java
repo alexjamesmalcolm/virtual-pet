@@ -31,6 +31,7 @@ public class VirtualPet {
 		} else {
 			hunger -= 80;
 		}
+		thirst = 26;
 	}
 
 }
