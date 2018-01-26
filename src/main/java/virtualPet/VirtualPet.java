@@ -25,4 +25,12 @@ public class VirtualPet {
 		thirst += 1;
 	}
 
+	public void feed() {
+		if (hunger < 80) {
+			hunger = 0;
+		} else {
+			hunger -= 80;
+		}
+	}
+
 }

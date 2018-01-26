@@ -58,7 +58,7 @@ public class VirtualPetTest {
 	}
 	
 	@Test
-	public void shouldHaveCustomAttributes() {
+	public void shouldAcceptCustomAttributes() {
 		int inputThirst = 80;
 		int inputHunger = 60;
 		int inputBoredom = 70;
@@ -72,5 +72,13 @@ public class VirtualPetTest {
 		Assert.assertEquals(inputBoredom, underTest.boredom);
 		Assert.assertEquals(inputWaste, underTest.waste);
 		Assert.assertEquals(inputSickness, underTest.sickness);
+	}
+	
+	@Test
+	public void shouldHaveFeedDecreaseHunger() {
+		VirtualPet underTest = new VirtualPet();
+		underTest.feed();
+		int hunger = underTest.hunger;
+		Assert.assertEquals(0, hunger);
 	}
 }
