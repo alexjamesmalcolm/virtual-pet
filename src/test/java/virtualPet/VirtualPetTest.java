@@ -5,6 +5,9 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
+	public static final int _FOOD_TO_THIRST_ = VirtualPet._FOOD_TO_THIRST_;
+	public static final int _FOOD_TO_WASTE_ = VirtualPet._FOOD_TO_WASTE_;
+
 	@Test
 	public void shouldHaveHungerAttribute() {
 		VirtualPet underTest = new VirtualPet();
@@ -90,7 +93,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0, 0);
 		underTest.feed();
 		int thirst = underTest.thirst;
-		Assert.assertEquals(inputHunger / 3, thirst);
+		Assert.assertEquals(inputHunger / _FOOD_TO_THIRST_, thirst);
 	}
 
 	@Test
@@ -101,7 +104,7 @@ public class VirtualPetTest {
 		underTest.feed();
 		int thirst = underTest.thirst;
 		int hunger = underTest.hunger;
-		Assert.assertEquals(inputHunger / 3, thirst);
+		Assert.assertEquals(inputHunger / _FOOD_TO_THIRST_, thirst);
 		Assert.assertEquals(20, hunger);
 	}
 
@@ -112,7 +115,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0, 0);
 		underTest.feed();
 		int thirst = underTest.thirst;
-		Assert.assertEquals(inputHunger / 3, thirst);
+		Assert.assertEquals(inputHunger / _FOOD_TO_THIRST_, thirst);
 	}
 
 	@Test
@@ -131,5 +134,15 @@ public class VirtualPetTest {
 		underTest.water();
 		int thirst = underTest.thirst;
 		Assert.assertEquals(20, thirst);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseWasteWhenHungerIs100() {
+		int inputHunger = 100;
+		int inputWaste = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0, 0);
+		underTest.feed();
+		int waste = underTest.waste;
+		Assert.assertEquals(inputHunger / _FOOD_TO_WASTE_, waste);
 	}
 }

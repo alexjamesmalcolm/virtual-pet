@@ -2,6 +2,8 @@ package virtualPet;
 
 public class VirtualPet {
 
+	public static final int _FOOD_TO_THIRST_ = 8;
+	public static final int _FOOD_TO_WASTE_ = 2;
 	public int hunger = 20;
 	public int thirst = 20;
 	public int waste = 20;
@@ -26,7 +28,8 @@ public class VirtualPet {
 	}
 
 	public void feed() {
-		thirst = hunger / 3;
+		thirst = hunger / _FOOD_TO_THIRST_;
+		waste = hunger / _FOOD_TO_WASTE_;
 		if (hunger < 80) {
 			hunger = 0;
 		} else {
