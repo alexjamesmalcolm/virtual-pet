@@ -4,6 +4,7 @@ public class VirtualPet {
 
 	public static final int _FOOD_TO_THIRST_ = 8;
 	public static final int _FOOD_TO_WASTE_ = 2;
+	public static final int _WATER_TO_WASTE_ = 2;
 	public int hunger = 20;
 	public int thirst = 20;
 	public int waste = 20;
@@ -38,6 +39,7 @@ public class VirtualPet {
 	}
 
 	public void water() {
+		waste = thirst / _WATER_TO_WASTE_;
 		if (thirst < 80) {
 			thirst = 0;
 		} else {

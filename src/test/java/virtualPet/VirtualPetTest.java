@@ -7,6 +7,7 @@ public class VirtualPetTest {
 
 	public static final int _FOOD_TO_THIRST_ = VirtualPet._FOOD_TO_THIRST_;
 	public static final int _FOOD_TO_WASTE_ = VirtualPet._FOOD_TO_WASTE_;
+	private static final int _WATER_TO_WASTE_ = VirtualPet._WATER_TO_WASTE_;
 
 	@Test
 	public void shouldHaveHungerAttribute() {
@@ -144,5 +145,15 @@ public class VirtualPetTest {
 		underTest.feed();
 		int waste = underTest.waste;
 		Assert.assertEquals(inputHunger / _FOOD_TO_WASTE_, waste);
+	}
+
+	@Test
+	public void shouldHaveWaterIncreaseWasteWhenThirstIs100() {
+		int inputThirst = 100;
+		int inputWaste = 0;
+		VirtualPet underTest = new VirtualPet(0, inputThirst, inputWaste, 0, 0);
+		underTest.water();
+		int waste = underTest.waste;
+		Assert.assertEquals(inputThirst / _WATER_TO_WASTE_, waste);
 	}
 }
