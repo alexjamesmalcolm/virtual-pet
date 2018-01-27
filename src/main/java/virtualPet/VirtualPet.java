@@ -14,70 +14,54 @@ public class VirtualPet {
 		return hunger;
 	}
 
-	public void setHunger(int hunger) {
-		this.hunger = hunger;
-	}
-
 	public int getThirst() {
 		return thirst;
-	}
-
-	public void setThirst(int thirst) {
-		this.thirst = thirst;
 	}
 
 	public int getWaste() {
 		return waste;
 	}
 
-	public void setWaste(int waste) {
-		this.waste = waste;
-	}
-
 	public int getBoredom() {
 		return boredom;
 	}
 
-	public void setBoredom(int boredom) {
-		this.boredom = boredom;
-	}
-
 	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
-		this.setThirst(inputThirst);
-		this.setHunger(inputHunger);
-		this.setWaste(inputWaste);
-		this.setBoredom(inputBoredom);
+		this.thirst = inputThirst;
+		this.hunger = inputHunger;
+		this.waste = inputWaste;
+		this.boredom = inputBoredom;
 	}
 
 	public VirtualPet() {
 	}
 
 	public void tick() {
-		setBoredom(getBoredom() + 1);
-		setHunger(getHunger() + 1);
-		setThirst(getThirst() + 1);
+		boredom += 1;
+		hunger += 1;
+		thirst += 1;
 	}
 
 	public void feed() {
-		setThirst(getThirst() + getHunger() / _HUNGER_TO_THIRST_);
+		thirst += hunger / _HUNGER_TO_THIRST_;
 		if (getWaste() + getHunger() / _HUNGER_TO_WASTE_ <= 100) {
-			setWaste(getWaste() + getHunger() / _HUNGER_TO_WASTE_);
+			waste += waste + hunger / _HUNGER_TO_WASTE_;
 		} else {
-			setWaste(100);
+			waste = 100;
 		}
 		if (getHunger() < 80) {
-			setHunger(0);
+			hunger = 0;
 		} else {
-			setHunger(getHunger() - 80);
+			hunger -= 80;
 		}
 	}
 
 	public void water() {
-		setWaste(getWaste() + getThirst() / _THIRST_TO_WASTE_);
+		waste += thirst / _THIRST_TO_WASTE_;
 		if (getThirst() < 80) {
-			setThirst(0);
+			thirst = 0;
 		} else {
-			setThirst(getThirst() - 80);
+			thirst -= 80;
 		}
 	}
 
