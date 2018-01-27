@@ -5,9 +5,111 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
-	public static final int _HUNGER_TO_THIRST_ = VirtualPet._HUNGER_TO_THIRST_;
-	public static final int _HUNGER_TO_WASTE_ = VirtualPet._HUNGER_TO_WASTE_;
+	private static final int _HUNGER_TO_THIRST_ = VirtualPet._HUNGER_TO_THIRST_;
+	private static final int _HUNGER_TO_WASTE_ = VirtualPet._HUNGER_TO_WASTE_;
 	private static final int _THIRST_TO_WASTE_ = VirtualPet._THIRST_TO_WASTE_;
+
+	@Test
+	public void shouldAcceptCustomAttributes() {
+		int inputThirst = 80;
+		int inputHunger = 60;
+		int inputBoredom = 70;
+		int inputWaste = 30;
+
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, inputWaste, inputBoredom);
+
+		Assert.assertEquals(inputThirst, underTest.getThirst());
+		Assert.assertEquals(inputHunger, underTest.getHunger());
+		Assert.assertEquals(inputBoredom, underTest.getBoredom());
+		Assert.assertEquals(inputWaste, underTest.getWaste());
+	}
+
+	@Test
+	public void shouldHaveBoredomAttribute() {
+		VirtualPet underTest = new VirtualPet();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(20, boredom);
+	}
+
+	@Test
+	public void shouldHaveFeedDecreaseHunger() {
+		VirtualPet underTest = new VirtualPet();
+		underTest.feed();
+		int hunger = underTest.getHunger();
+		Assert.assertEquals(0, hunger);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseThirstWhenHungerIs100() {
+		int inputHunger = 100;
+		int inputThirst = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
+		underTest.feed();
+		int thirst = underTest.getThirst();
+		int hunger = underTest.getHunger();
+		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+		Assert.assertEquals(20, hunger);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseThirstWhenHungerIs30() {
+		int inputHunger = 30;
+		int inputThirst = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
+		underTest.feed();
+		int thirst = underTest.getThirst();
+		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseThirstWhenHungerIs80() {
+		int inputHunger = 80;
+		int inputThirst = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
+		underTest.feed();
+		int thirst = underTest.getThirst();
+		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseThirstWhenThirstIs20() {
+		int inputHunger = 50;
+		int inputThirst = 20;
+		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
+		underTest.feed();
+		int thirst = underTest.getThirst();
+		Assert.assertEquals(inputThirst + inputHunger / _HUNGER_TO_THIRST_, thirst);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseWasteWhenHungerIs100() {
+		int inputHunger = 100;
+		int inputWaste = 0;
+		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
+		underTest.feed();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(inputHunger / _HUNGER_TO_WASTE_, waste);
+	}
+
+	@Test
+	public void shouldHaveFeedIncreaseWasteWhenHungerIs60AndWasteIs30() {
+		int inputHunger = 60;
+		int inputWaste = 30;
+		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
+		underTest.feed();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(inputWaste + inputHunger / _HUNGER_TO_WASTE_, waste);
+	}
+
+	@Test
+	public void shouldHaveFeedNotIncreaseWasteOrDecreaseHungerWhenWasteIs90AndHungerIs90() {
+		int inputHunger = 90;
+		int inputWaste = 90;
+		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
+		underTest.feed();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(100, waste);
+	}
 
 	@Test
 	public void shouldHaveHungerAttribute() {
@@ -17,25 +119,37 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHavePlayDecreaseBoredomWhen10() {
+		int inputBoredom = 10;
+		VirtualPet underTest = new VirtualPet(0, 0, 0, inputBoredom);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(0, boredom);
+	}
+
+	@Test
+	public void shouldHavePlayDecreaseBoredomWhen100() {
+		int inputBoredom = 100;
+		VirtualPet underTest = new VirtualPet(0, 0, 0, inputBoredom);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(inputBoredom - 80, boredom);
+	}
+
+	@Test
+	public void shouldHavePlayDecreaseBoredomWhen90() {
+		int inputBoredom = 90;
+		VirtualPet underTest = new VirtualPet(0, 0, 0, inputBoredom);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(10, boredom);
+	}
+
+	@Test
 	public void shouldHaveThirstAttribute() {
 		VirtualPet underTest = new VirtualPet();
 		int thirst = underTest.getThirst();
 		Assert.assertEquals(20, thirst);
-	}
-
-	@Test
-	public void shouldHaveWasteAttribute() {
-		VirtualPet underTest = new VirtualPet();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(20, waste);
-		;
-	}
-
-	@Test
-	public void shouldHaveBoredomAttribute() {
-		VirtualPet underTest = new VirtualPet();
-		int boredom = underTest.getBoredom();
-		Assert.assertEquals(20, boredom);
 	}
 
 	@Test
@@ -63,58 +177,11 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldAcceptCustomAttributes() {
-		int inputThirst = 80;
-		int inputHunger = 60;
-		int inputBoredom = 70;
-		int inputWaste = 30;
-
-		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, inputWaste, inputBoredom);
-
-		Assert.assertEquals(inputThirst, underTest.getThirst());
-		Assert.assertEquals(inputHunger, underTest.getHunger());
-		Assert.assertEquals(inputBoredom, underTest.getBoredom());
-		Assert.assertEquals(inputWaste, underTest.getWaste());
-	}
-
-	@Test
-	public void shouldHaveFeedDecreaseHunger() {
+	public void shouldHaveWasteAttribute() {
 		VirtualPet underTest = new VirtualPet();
-		underTest.feed();
-		int hunger = underTest.getHunger();
-		Assert.assertEquals(0, hunger);
-	}
-
-	@Test
-	public void shouldHaveFeedIncreaseThirstWhenHungerIs80() {
-		int inputHunger = 80;
-		int inputThirst = 0;
-		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
-		underTest.feed();
-		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
-	}
-
-	@Test
-	public void shouldHaveFeedIncreaseThirstWhenHungerIs100() {
-		int inputHunger = 100;
-		int inputThirst = 0;
-		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
-		underTest.feed();
-		int thirst = underTest.getThirst();
-		int hunger = underTest.getHunger();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
-		Assert.assertEquals(20, hunger);
-	}
-
-	@Test
-	public void shouldHaveFeedIncreaseThirstWhenHungerIs30() {
-		int inputHunger = 30;
-		int inputThirst = 0;
-		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
-		underTest.feed();
-		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+		int waste = underTest.getWaste();
+		Assert.assertEquals(20, waste);
+		;
 	}
 
 	@Test
@@ -136,18 +203,8 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveFeedIncreaseWasteWhenHungerIs100() {
-		int inputHunger = 100;
-		int inputWaste = 0;
-		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
-		underTest.feed();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveWaterIncreaseWasteWhenThirstIs100() {
-		int inputThirst = 100;
+	public void shouldHaveWaterIncreaseWasteWhenThirstIs10() {
+		int inputThirst = 10;
 		int inputWaste = 0;
 		VirtualPet underTest = new VirtualPet(0, inputThirst, inputWaste, 0);
 		underTest.water();
@@ -156,8 +213,8 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveWaterIncreaseWasteWhenThirstIs10() {
-		int inputThirst = 10;
+	public void shouldHaveWaterIncreaseWasteWhenThirstIs100() {
+		int inputThirst = 100;
 		int inputWaste = 0;
 		VirtualPet underTest = new VirtualPet(0, inputThirst, inputWaste, 0);
 		underTest.water();
@@ -173,53 +230,5 @@ public class VirtualPetTest {
 		underTest.water();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveFeedIncreaseWasteWhenHungerIs60AndWasteIs30() {
-		int inputHunger = 60;
-		int inputWaste = 30;
-		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
-		underTest.feed();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(inputWaste + inputHunger / _HUNGER_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveFeedNotIncreaseWasteOrDecreaseHungerWhenWasteIs90AndHungerIs90() {
-		int inputHunger = 90;
-		int inputWaste = 90;
-		VirtualPet underTest = new VirtualPet(inputHunger, 0, inputWaste, 0);
-		underTest.feed();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(100, waste);
-	}
-
-	@Test
-	public void shouldHaveFeedIncreaseThirstWhenThirstIs20() {
-		int inputHunger = 50;
-		int inputThirst = 20;
-		VirtualPet underTest = new VirtualPet(inputHunger, inputThirst, 0, 0);
-		underTest.feed();
-		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputThirst + inputHunger / _HUNGER_TO_THIRST_, thirst);
-	}
-
-	@Test
-	public void shouldHavePlayDecreaseBoredomWhen100() {
-		int inputBoredom = 100;
-		VirtualPet underTest = new VirtualPet(0, 0, 0, inputBoredom);
-		underTest.play();
-		int boredom = underTest.getBoredom();
-		Assert.assertEquals(inputBoredom - 80, boredom);
-	}
-
-	@Test
-	public void shouldHavePlayDecreaseBoredomWhen10() {
-		int inputBoredom = 10;
-		VirtualPet underTest = new VirtualPet(0,0,0,inputBoredom);
-		underTest.play();
-		int boredom = underTest.getBoredom();
-		Assert.assertEquals(0, boredom);
 	}
 }
