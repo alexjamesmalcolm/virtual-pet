@@ -45,7 +45,7 @@ public class VirtualPet {
 	public void feed() {
 		thirst += hunger / _HUNGER_TO_THIRST_;
 		if (getWaste() + getHunger() / _HUNGER_TO_WASTE_ <= 100) {
-			waste += waste + hunger / _HUNGER_TO_WASTE_;
+			waste += hunger / _HUNGER_TO_WASTE_;
 		} else {
 			waste = 100;
 		}
@@ -63,6 +63,10 @@ public class VirtualPet {
 		} else {
 			thirst -= 80;
 		}
+	}
+
+	public void play() {
+		boredom = 20;
 	}
 
 }
