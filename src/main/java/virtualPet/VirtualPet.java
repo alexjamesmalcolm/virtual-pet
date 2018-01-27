@@ -78,7 +78,7 @@ public class VirtualPet {
 	}
 
 	public void bathroom() {
-		waste = 20;
+		waste -= 80;
 	}
 
 }
