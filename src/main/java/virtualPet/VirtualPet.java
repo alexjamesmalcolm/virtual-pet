@@ -5,10 +5,7 @@ public class VirtualPet {
 	public static final int _HUNGER_TO_THIRST_ = 8;
 	public static final int _HUNGER_TO_WASTE_ = 2;
 	public static final int _THIRST_TO_WASTE_ = 2;
-	private int hunger = 20;
-	private int thirst = 20;
-	private int waste = 20;
-	private int boredom = 20;
+	private int hunger, thirst, waste, boredom;
 
 	public int getHunger() {
 		return hunger;
@@ -34,6 +31,10 @@ public class VirtualPet {
 	}
 
 	public VirtualPet() {
+		thirst = 20;
+		hunger = 20;
+		waste = 20;
+		boredom = 20;
 	}
 
 	public void tick() {
