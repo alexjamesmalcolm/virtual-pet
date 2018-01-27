@@ -216,5 +216,10 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHavePlayDecreaseBoredomWhen10() {
+		int inputBoredom = 10;
+		VirtualPet underTest = new VirtualPet(0,0,0,inputBoredom);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(0, boredom);
 	}
 }

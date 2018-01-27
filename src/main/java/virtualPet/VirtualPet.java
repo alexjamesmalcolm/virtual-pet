@@ -66,7 +66,11 @@ public class VirtualPet {
 	}
 
 	public void play() {
-		boredom = 20;
+		if (boredom < 80) {
+			boredom = 0;
+		} else {
+			boredom = 20;
+		}
 	}
 
 }
