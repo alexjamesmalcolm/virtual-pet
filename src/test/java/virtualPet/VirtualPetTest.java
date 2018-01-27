@@ -43,6 +43,15 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveBathroomDecreaseWasteWhen10() {
+		int inputWaste = 10;
+		VirtualPet underTest = new VirtualPet(0, 0, inputWaste, 0);
+		underTest.bathroom();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(0, waste);
+	}
+
+	@Test
 	public void shouldHaveFeedDecreaseHunger() {
 		VirtualPet underTest = new VirtualPet();
 		underTest.feed();
