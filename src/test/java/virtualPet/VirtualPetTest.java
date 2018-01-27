@@ -25,13 +25,6 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveBoredomAttribute() {
-		VirtualPet underTest = new VirtualPet();
-		int boredom = underTest.getBoredom();
-		Assert.assertEquals(20, boredom);
-	}
-
-	@Test
 	public void shouldHaveFeedDecreaseHunger() {
 		VirtualPet underTest = new VirtualPet();
 		underTest.feed();
@@ -112,10 +105,32 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveHungerAttribute() {
+	public void shouldHaveGetBoredomReturnBoredom() {
+		VirtualPet underTest = new VirtualPet();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(20, boredom);
+	}
+
+	@Test
+	public void shouldHaveGetHungerReturnHunger() {
 		VirtualPet underTest = new VirtualPet();
 		int hunger = underTest.getHunger();
 		Assert.assertEquals(20, hunger);
+	}
+
+	@Test
+	public void shouldHaveGetThirstReturnThirst() {
+		VirtualPet underTest = new VirtualPet();
+		int thirst = underTest.getThirst();
+		Assert.assertEquals(20, thirst);
+	}
+
+	@Test
+	public void shouldHaveGetWasteReturnWaste() {
+		VirtualPet underTest = new VirtualPet();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(20, waste);
+		;
 	}
 
 	@Test
@@ -146,13 +161,6 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveThirstAttribute() {
-		VirtualPet underTest = new VirtualPet();
-		int thirst = underTest.getThirst();
-		Assert.assertEquals(20, thirst);
-	}
-
-	@Test
 	public void shouldHaveTickIncreaseBoredom() {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
@@ -174,14 +182,6 @@ public class VirtualPetTest {
 		underTest.tick();
 		int thirst = underTest.getThirst();
 		Assert.assertEquals(21, thirst);
-	}
-
-	@Test
-	public void shouldHaveWasteAttribute() {
-		VirtualPet underTest = new VirtualPet();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(20, waste);
-		;
 	}
 
 	@Test
