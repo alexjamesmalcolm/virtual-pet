@@ -249,7 +249,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByBoredomInsteadHunger() {
-		VirtualPet underTest = new VirtualPet(null, 10, 0, 0, 80);
+		VirtualPet underTest = new VirtualPet(null, 40, 0, 0, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
@@ -257,7 +257,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByBoredomInsteadThirst() {
-		VirtualPet underTest = new VirtualPet(null, 0, 10, 0, 80);
+		VirtualPet underTest = new VirtualPet(null, 0, 40, 0, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
@@ -265,7 +265,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByBoredomInsteadWaste() {
-		VirtualPet underTest = new VirtualPet(null, 0, 0, 10, 80);
+		VirtualPet underTest = new VirtualPet(null, 0, 0, 40, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
@@ -273,7 +273,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByHungerInsteadBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 80, 0, 0, 10);
+		VirtualPet underTest = new VirtualPet(null, 80, 0, 0, 40);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
@@ -281,7 +281,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByHungerInsteadThirst() {
-		VirtualPet underTest = new VirtualPet(null, 80, 10, 0, 0);
+		VirtualPet underTest = new VirtualPet(null, 80, 40, 0, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
@@ -289,7 +289,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByHungerInsteadWaste() {
-		VirtualPet underTest = new VirtualPet(null, 80, 0, 10, 0);
+		VirtualPet underTest = new VirtualPet(null, 80, 0, 40, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
@@ -297,7 +297,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByThirstInsteadBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 0, 80, 0, 10);
+		VirtualPet underTest = new VirtualPet(null, 0, 80, 0, 40);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
@@ -305,7 +305,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByThirstInsteadHunger() {
-		VirtualPet underTest = new VirtualPet(null, 10, 80, 0, 0);
+		VirtualPet underTest = new VirtualPet(null, 40, 80, 0, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
@@ -313,7 +313,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByThirstInsteadWaste() {
-		VirtualPet underTest = new VirtualPet(null, 0, 80, 10, 0);
+		VirtualPet underTest = new VirtualPet(null, 0, 80, 40, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
@@ -321,23 +321,23 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByWasteInsteadBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 0, 0, 80, 10);
+		VirtualPet underTest = new VirtualPet(null, 0, 0, 80, 40);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80, disagreeableness);
 	}
-	
+
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByWasteInsteadHunger() {
-		VirtualPet underTest = new VirtualPet(null,10,0,80,0);
+		VirtualPet underTest = new VirtualPet(null, 40, 0, 80, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80, disagreeableness);
 	}
-	
+
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByWasteInsteadThirst() {
-		VirtualPet underTest = new VirtualPet(null,0,10,80,0);
+		VirtualPet underTest = new VirtualPet(null, 0, 40, 80, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80, disagreeableness);
