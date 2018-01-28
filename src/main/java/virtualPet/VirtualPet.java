@@ -103,7 +103,7 @@ public class VirtualPet {
 		}
 	}
 
-	public void feed() {
+	public boolean feed() {
 		if (thirst + hunger / HUNGER_TO_THIRST <= 100) {
 			thirst += hunger / HUNGER_TO_THIRST;
 		} else {
@@ -120,6 +120,8 @@ public class VirtualPet {
 		} else {
 			hunger -= 80;
 		}
+		
+		return false;
 	}
 
 	public void water() {

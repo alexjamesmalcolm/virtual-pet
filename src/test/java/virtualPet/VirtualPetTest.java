@@ -486,4 +486,14 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / THIRST_TO_WASTE, waste);
 	}
+
+	@Test
+	public void shouldHaveFeedDisfunctionWhenDisagreeablenessIsHigh() {
+		int inputThirst = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertFalse(status);
+	}
 }
