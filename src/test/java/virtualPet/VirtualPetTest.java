@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
-	private static final int _THIRST_PER_TICK_ = VirtualPet._THIRST_PER_TICK_;
-	private static final int _HUNGER_PER_TICK_ = VirtualPet._HUNGER_PER_TICK_;
-	private static final int _BOREDOM_PER_TICK_ = VirtualPet._BOREDOM_PER_TICK_;
-	private static final int _HUNGER_TO_THIRST_ = VirtualPet._HUNGER_TO_THIRST_;
-	private static final int _HUNGER_TO_WASTE_ = VirtualPet._HUNGER_TO_WASTE_;
-	private static final int _THIRST_TO_WASTE_ = VirtualPet._THIRST_TO_WASTE_;
+	private static final int _THIRST_PER_TICK_ = VirtualPet.THIRST_PER_TICK;
+	private static final int _HUNGER_PER_TICK_ = VirtualPet.HUNGER_PER_TICK;
+	private static final int _BOREDOM_PER_TICK_ = VirtualPet.BOREDOM_PER_TICK;
+	private static final int _HUNGER_TO_THIRST_ = VirtualPet.HUNGER_TO_THIRST;
+	private static final int _HUNGER_TO_WASTE_ = VirtualPet.HUNGER_TO_WASTE;
+	private static final int _THIRST_TO_WASTE_ = VirtualPet.THIRST_TO_WASTE;
 
 	@Test
 	public void shouldAcceptCustomAttributes() {

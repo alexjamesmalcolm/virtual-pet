@@ -2,12 +2,12 @@ package virtualPet;
 
 public class VirtualPet {
 
-	public static final int _THIRST_PER_TICK_ = 12;
-	public static final int _HUNGER_PER_TICK_ = 6;
-	public static final int _BOREDOM_PER_TICK_ = 12;
-	public static final int _HUNGER_TO_THIRST_ = 8;
-	public static final int _HUNGER_TO_WASTE_ = 2;
-	public static final int _THIRST_TO_WASTE_ = 2;
+	public static final int THIRST_PER_TICK = 12;
+	public static final int HUNGER_PER_TICK = 6;
+	public static final int BOREDOM_PER_TICK = 12;
+	public static final int HUNGER_TO_THIRST = 8;
+	public static final int HUNGER_TO_WASTE = 2;
+	public static final int THIRST_TO_WASTE = 2;
 	private int hunger;
 	private int thirst;
 	private int waste;
@@ -69,9 +69,9 @@ public class VirtualPet {
 	}
 
 	public void tick() {
-		boredom += _BOREDOM_PER_TICK_;
-		hunger += _HUNGER_PER_TICK_;
-		thirst += _THIRST_PER_TICK_;
+		boredom += BOREDOM_PER_TICK;
+		hunger += HUNGER_PER_TICK;
+		thirst += THIRST_PER_TICK;
 		if (waste >= 100) {
 			bathroom();
 		}
@@ -104,16 +104,16 @@ public class VirtualPet {
 	}
 
 	public void feed() {
-		if (thirst + hunger / _HUNGER_TO_THIRST_ <= 100) {
-			thirst += hunger / _HUNGER_TO_THIRST_;
+		if (thirst + hunger / HUNGER_TO_THIRST <= 100) {
+			thirst += hunger / HUNGER_TO_THIRST;
 		} else {
 			thirst = 100;
 		}
 
-		if (waste + hunger / _HUNGER_TO_WASTE_ >= 100) {
+		if (waste + hunger / HUNGER_TO_WASTE >= 100) {
 			bathroom();
 		}
-		waste += hunger / _HUNGER_TO_WASTE_;
+		waste += hunger / HUNGER_TO_WASTE;
 
 		if (hunger < 80) {
 			hunger = 0;
@@ -123,10 +123,10 @@ public class VirtualPet {
 	}
 
 	public void water() {
-		if (waste + thirst / _THIRST_TO_WASTE_ >= 100) {
+		if (waste + thirst / THIRST_TO_WASTE >= 100) {
 			bathroom();
 		}
-		waste += thirst / _THIRST_TO_WASTE_;
+		waste += thirst / THIRST_TO_WASTE;
 
 		if (thirst < 80) {
 			thirst = 0;
