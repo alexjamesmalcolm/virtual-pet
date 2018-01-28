@@ -7,6 +7,7 @@ public class VirtualPet {
 	public static final int _THIRST_TO_WASTE_ = 2;
 	private int hunger, thirst, waste, boredom;
 	private String name;
+	public String priority;
 
 	public int getHunger() {
 		return hunger;
@@ -51,6 +52,7 @@ public class VirtualPet {
 		if (waste >= 100) {
 			bathroom();
 		}
+		priority = "boredom";
 	}
 
 	public void feed() {
