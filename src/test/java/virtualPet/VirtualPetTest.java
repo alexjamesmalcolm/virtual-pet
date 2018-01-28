@@ -546,6 +546,11 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsLow() {
+		int inputBoredom = 50;
+		int inputHunger = 10;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		boolean status = underTest.play();
+		Assert.assertTrue(status);
 	}
 
 	@Test

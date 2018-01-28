@@ -149,12 +149,14 @@ public class VirtualPet {
 		return true;
 	}
 
-	public void play() {
+	public boolean play() {
 		if (boredom < 80) {
 			boredom = 0;
 		} else {
 			boredom -= 80;
 		}
+		
+		return true;
 	}
 
 	public void bathroom() {
