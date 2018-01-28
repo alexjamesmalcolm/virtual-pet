@@ -60,6 +60,10 @@ public class VirtualPet {
 		name = "Ramanujan";
 	}
 
+	public VirtualPet(String name) {
+		this.name = name;
+	}
+
 	public void tick() {
 		boredom += _BOREDOM_PER_TICK_;
 		hunger += _HUNGER_PER_TICK_;
@@ -156,7 +160,7 @@ public class VirtualPet {
 	}
 
 	public boolean hasEscaped() {
-		if(boredom >= 100) {
+		if (boredom >= 100) {
 			return true;
 		}
 		return false;

@@ -6,7 +6,17 @@ public class VirtualPetApp {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		VirtualPet myPet = new VirtualPet();
+
+		System.out.println("Would you like to name your pet? (y/n)");
+		String choice = input.next();
+		VirtualPet myPet;
+		if (choice.contains("y")) {
+			System.out.println("What would you like to name your pet?");
+			String inputName = input.nextLine();
+			myPet = new VirtualPet(inputName);
+		} else {
+			myPet = new VirtualPet();
+		}
 
 		while (myPet.alive() && !myPet.hasEscaped()) {
 			int hunger = myPet.getHunger();
@@ -21,12 +31,12 @@ public class VirtualPetApp {
 			System.out.println("Waste:   " + progressBar(waste));
 			System.out.println("Boredom: " + progressBar(boredom));
 			System.out.println();
-			System.out.println("Menu");
 			System.out.println("1. Feed " + name);
-			System.out.println("2. Water " + name);
-			System.out.println("3. Bathroom " + name);
-			System.out.println("4. Play " + name);
+			System.out.println("2. Refill " + name + "'s water");
+			System.out.println("3. Let " + name + " go to the bathroom");
+			System.out.println("4. Play with " + name);
 			System.out.println("5. Do nothing");
+			System.out.println("6. Exit");
 			int option = input.nextInt();
 			// feed, water, play, bathroom
 			myPet.tick();
@@ -38,6 +48,9 @@ public class VirtualPetApp {
 				myPet.bathroom();
 			} else if (option == 4) {
 				myPet.play();
+			} else if (option == 6) {
+				input.close();
+				System.exit(0);
 			}
 		}
 
