@@ -605,6 +605,7 @@ public class VirtualPetTest {
 		int inputBoredom = 50;
 		int inputHunger = 90;
 		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		underTest.play();
 		int boredom = underTest.getBoredom();
 		Assert.assertEquals(inputBoredom, boredom);
 	}

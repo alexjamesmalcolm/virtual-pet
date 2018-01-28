@@ -154,14 +154,14 @@ public class VirtualPet {
 	}
 
 	public boolean play() {
+		if (disagreeableness >= 80 && !priority.equals("boredom")) {
+			return false;
+		}
+
 		if (boredom < 80) {
 			boredom = 0;
 		} else {
 			boredom -= 80;
-		}
-
-		if (disagreeableness >= 80 && !priority.equals("boredom")) {
-			return false;
 		}
 
 		return true;
