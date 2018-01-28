@@ -601,6 +601,15 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHavePlayDisfunctionWhenFalseIsReturned() {
+		int inputBoredom = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(inputBoredom, boredom);
+	}
+
+	@Test
 	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
 		int inputWaste = 50;
 		int inputHunger = 10;
