@@ -48,6 +48,9 @@ public class VirtualPet {
 		boredom += 1;
 		hunger += 1;
 		thirst += 1;
+		if (waste >= 100) {
+			bathroom();
+		}
 	}
 
 	public void feed() {
