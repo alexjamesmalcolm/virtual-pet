@@ -11,4 +11,11 @@ public class VirtualPetAppTest {
 		String expected = "░░░░░░░░░░░░░░░░░░░░";
 		Assert.assertEquals(expected, result);
 	}
+	
+	@Test
+	public void shouldHaveProgressBarReturnFullBar() {
+		String result = VirtualPetApp.progressBar(100);
+		String expected = "████████████████████";
+		Assert.assertEquals(expected, result);
+	}
 }

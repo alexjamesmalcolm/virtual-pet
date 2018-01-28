@@ -44,18 +44,27 @@ public class VirtualPetApp {
 		if (!myPet.alive()) {
 			System.out.println(myPet.getName() + " has died.");
 		}
-		
-		if(myPet.hasEscaped()) {
+
+		if (myPet.hasEscaped()) {
 			System.out.println(myPet.getName() + " has left.");
 		}
-		
+
 		input.close();
 	}
 
-	public static String progressBar(int hunger) {
+	public static String progressBar(int percentage) {
 		String full = "█";
 		String empty = "░";
-		return "░░░░░░░░░░░░░░░░░░░░";
+		String result = "";
+		int numberOfFull = percentage / 5;
+		int numberOfEmpty = 20 - numberOfFull;
+		for (int i = 0; i < numberOfFull; i++) {
+			result += full;
+		}
+		for (int i = 0; i < numberOfEmpty; i++) {
+			result += empty;
+		}
+		return result;
 	}
 
 }
