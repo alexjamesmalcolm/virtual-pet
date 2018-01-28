@@ -156,6 +156,9 @@ public class VirtualPet {
 	}
 
 	public boolean hasEscaped() {
+		if(boredom >= 100) {
+			return true;
+		}
 		return false;
 	}
 

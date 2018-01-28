@@ -8,7 +8,7 @@ public class VirtualPetApp {
 		Scanner input = new Scanner(System.in);
 		VirtualPet myPet = new VirtualPet();
 
-		while (myPet.alive()) {
+		while (myPet.alive() && !myPet.hasEscaped()) {
 			int hunger = myPet.getHunger();
 			int thirst = myPet.getThirst();
 			int waste = myPet.getWaste();
