@@ -72,7 +72,9 @@ public class VirtualPet {
 			priority = "boredom";
 		}
 
-		if (thirst > hunger) {
+		if (waste > thirst) {
+			disagreeableness = waste;
+		} else if (thirst > hunger) {
 			disagreeableness = thirst;
 		} else {
 			disagreeableness = hunger;
