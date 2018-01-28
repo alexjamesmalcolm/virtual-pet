@@ -506,4 +506,13 @@ public class VirtualPetTest {
 		boolean status = underTest.feed();
 		Assert.assertTrue(status);
 	}
+
+	@Test
+	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsHighButPriorityIsHunger() {
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertTrue(status);
+	}
 }

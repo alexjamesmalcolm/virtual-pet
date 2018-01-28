@@ -121,10 +121,10 @@ public class VirtualPet {
 			hunger -= 80;
 		}
 
-		if (disagreeableness < 80) {
-			return true;
+		if (disagreeableness >= 80 && !priority.equals("hunger")) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public void water() {
