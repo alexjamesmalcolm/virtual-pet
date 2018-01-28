@@ -59,30 +59,30 @@ public class VirtualPetApp {
 		input.close();
 	}
 
-	private static void gameLoop(Scanner input, VirtualPet myPet) {
-		displayStats(myPet);
+	private static void gameLoop(Scanner input, VirtualPet pet) {
+		displayStats(pet);
 
 		System.out.println();
 
-		int option = requestAction(input, myPet);
+		int option = requestAction(input, pet);
 
-		myPet.tick();
+		pet.tick();
 		if (option == 1) {
-			myPet.feed();
+			pet.feed();
 		} else if (option == 2) {
-			myPet.water();
+			pet.water();
 		} else if (option == 3) {
-			myPet.bathroom();
+			pet.bathroom();
 		} else if (option == 4) {
-			myPet.play();
+			pet.play();
 		} else if (option == 6) {
 			input.close();
 			System.exit(0);
 		}
 	}
 
-	private static int requestAction(Scanner input, VirtualPet myPet) {
-		String name = myPet.getName();
+	private static int requestAction(Scanner input, VirtualPet pet) {
+		String name = pet.getName();
 		System.out.println("1. Feed " + name);
 		System.out.println("2. Refill " + name + "'s water");
 		System.out.println("3. Let " + name + " go to the bathroom");
@@ -93,12 +93,12 @@ public class VirtualPetApp {
 		return option;
 	}
 
-	private static void displayStats(VirtualPet myPet) {
-		int hunger = myPet.getHunger();
-		int thirst = myPet.getThirst();
-		int waste = myPet.getWaste();
-		int boredom = myPet.getBoredom();
-		String name = myPet.getName();
+	private static void displayStats(VirtualPet pet) {
+		int hunger = pet.getHunger();
+		int thirst = pet.getThirst();
+		int waste = pet.getWaste();
+		int boredom = pet.getBoredom();
+		String name = pet.getName();
 
 		System.out.println(name);
 		System.out.println("Hunger:  " + progressBar(hunger));
