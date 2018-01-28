@@ -249,7 +249,15 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByBoredomInsteadThirst() {
-		VirtualPet underTest = new VirtualPet(null, 0, 1, 0, 80);
+		VirtualPet underTest = new VirtualPet(null, 0, 10, 0, 80);
+		underTest.tick();
+		int disagreeableness = underTest.disagreeableness;
+		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
+	}
+
+	@Test
+	public void shouldHaveTickDetermineDisagreeablenessByBoredomInsteadHunger() {
+		VirtualPet underTest = new VirtualPet(null, 10, 0, 0, 80);
 		underTest.tick();
 		int disagreeableness = underTest.disagreeableness;
 		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
@@ -257,15 +265,19 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByHungerInsteadThirst() {
-		VirtualPet underTest = new VirtualPet(null, 80, 1, 0, 0);
+		VirtualPet underTest = new VirtualPet(null, 80, 10, 0, 0);
 		underTest.tick();
+		//System.out.println("Hunger: " + underTest.getHunger());
+		//System.out.println("Thirst: " + underTest.getThirst());
+		//System.out.println("Waste: " + underTest.getWaste());
+		//System.out.println("Boredom: " + underTest.getBoredom());
 		int disagreeableness = underTest.disagreeableness;
 		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
 	}
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByThirstInsteadWaste() {
-		VirtualPet underTest = new VirtualPet(null, 0, 80, 1, 0);
+		VirtualPet underTest = new VirtualPet(null, 0, 80, 10, 0);
 		underTest.tick();
 		int disagreeableness = underTest.disagreeableness;
 		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
@@ -273,7 +285,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByWasteInsteadBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 0, 0, 80, 1);
+		VirtualPet underTest = new VirtualPet(null, 0, 0, 80, 10);
 		underTest.tick();
 		int disagreeableness = underTest.disagreeableness;
 		Assert.assertEquals(80, disagreeableness);
