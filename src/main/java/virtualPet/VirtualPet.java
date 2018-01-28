@@ -120,7 +120,10 @@ public class VirtualPet {
 		} else {
 			hunger -= 80;
 		}
-		
+
+		if (disagreeableness < 80) {
+			return true;
+		}
 		return false;
 	}
 

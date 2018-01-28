@@ -488,12 +488,22 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveFeedDisfunctionWhenDisagreeablenessIsHigh() {
+	public void shouldHaveFeedReturnFalseWhenDisagreeablenessIsHighAndPriorityIsThirst() {
 		int inputThirst = 90;
 		int inputHunger = 50;
 		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
 		underTest.tick();
 		boolean status = underTest.feed();
 		Assert.assertFalse(status);
+	}
+
+	@Test
+	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsLow() {
+		int inputThirst = 10;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertTrue(status);
 	}
 }
