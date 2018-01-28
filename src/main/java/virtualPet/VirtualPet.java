@@ -10,7 +10,7 @@ public class VirtualPet {
 	private int waste;
 	private int boredom;
 	private String name;
-	public String priority;
+	private String priority;
 
 	public int getHunger() {
 		return hunger;
@@ -30,6 +30,10 @@ public class VirtualPet {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getPriority() {
+		return priority;
 	}
 
 	public VirtualPet(String name, int hunger, int thirst, int waste, int boredom) {
