@@ -87,7 +87,10 @@ public class VirtualPet {
 	}
 
 	public boolean alive() {
-		return !false;
+		if(hunger >= 100) {
+			return false;
+		}
+		return true;
 	}
 
 }
