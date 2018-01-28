@@ -68,6 +68,12 @@ public class VirtualPet {
 			bathroom();
 		}
 
+		determinePriority();
+
+		determineDisagreeableness();
+	}
+
+	private void determinePriority() {
 		if (thirst > hunger && thirst > boredom) {
 			priority = "thirst";
 		} else if (hunger > boredom) {
@@ -75,7 +81,9 @@ public class VirtualPet {
 		} else {
 			priority = "boredom";
 		}
+	}
 
+	private void determineDisagreeableness() {
 		if (boredom > thirst && boredom > waste && boredom > hunger) {
 			disagreeableness = boredom;
 		} else if (waste > thirst && waste > hunger) {
@@ -93,11 +101,13 @@ public class VirtualPet {
 		} else {
 			thirst = 100;
 		}
+		
 		if (waste + hunger / _HUNGER_TO_WASTE_ <= 100) {
 			waste += hunger / _HUNGER_TO_WASTE_;
 		} else {
 			waste = 100;
 		}
+		
 		if (getHunger() < 80) {
 			hunger = 0;
 		} else {
@@ -107,6 +117,7 @@ public class VirtualPet {
 
 	public void water() {
 		waste += thirst / _THIRST_TO_WASTE_;
+		
 		if (getThirst() < 80) {
 			thirst = 0;
 		} else {
@@ -134,9 +145,11 @@ public class VirtualPet {
 		if (hunger >= 100) {
 			return false;
 		}
+		
 		if (thirst >= 100) {
 			return false;
 		}
+		
 		return true;
 	}
 
