@@ -2,6 +2,9 @@ package virtualPet;
 
 public class VirtualPet {
 
+	public static final int _THIRST_PER_TICK_ = 2;
+	public static final int _HUNGER_PER_TICK_ = 3;
+	public static final int _BOREDOM_PER_TICK_ = 4;
 	public static final int _HUNGER_TO_THIRST_ = 8;
 	public static final int _HUNGER_TO_WASTE_ = 2;
 	public static final int _THIRST_TO_WASTE_ = 2;
@@ -54,9 +57,9 @@ public class VirtualPet {
 	}
 
 	public void tick() {
-		boredom += 1;
-		hunger += 1;
-		thirst += 1;
+		boredom += _BOREDOM_PER_TICK_;
+		hunger += _HUNGER_PER_TICK_;
+		thirst += _THIRST_PER_TICK_;
 		if (waste >= 100) {
 			bathroom();
 		}
@@ -69,7 +72,11 @@ public class VirtualPet {
 			priority = "boredom";
 		}
 
-		disagreeableness = 80;
+		if (thirst > hunger) {
+			disagreeableness = thirst;
+		} else {
+			disagreeableness = hunger;
+		}
 	}
 
 	public void feed() {

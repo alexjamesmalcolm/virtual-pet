@@ -5,6 +5,9 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
+	private static final int _THIRST_PER_TICK_ = VirtualPet._THIRST_PER_TICK_;
+	private static final int _HUNGER_PER_TICK_ = VirtualPet._HUNGER_PER_TICK_;
+	private static final int _BOREDOM_PER_TICK_ = VirtualPet._BOREDOM_PER_TICK_;
 	private static final int _HUNGER_TO_THIRST_ = VirtualPet._HUNGER_TO_THIRST_;
 	private static final int _HUNGER_TO_WASTE_ = VirtualPet._HUNGER_TO_WASTE_;
 	private static final int _THIRST_TO_WASTE_ = VirtualPet._THIRST_TO_WASTE_;
@@ -291,13 +294,21 @@ public class VirtualPetTest {
 		String priority = underTest.getPriority();
 		Assert.assertEquals("thirst", priority);
 	}
-	
+
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessIs80() {
-		VirtualPet underTest = new VirtualPet(null, 80, 60, 40, 20);		
+		VirtualPet underTest = new VirtualPet(null, 80, 60, 40, 20);
 		underTest.tick();
 		int disagreeableness = underTest.disagreeableness;
-		Assert.assertEquals(80, disagreeableness);
+		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
+	}
+
+	@Test
+	public void shouldHaveTickDetermineDisagreeablenessIs60() {
+		VirtualPet underTest = new VirtualPet(null, 0, 60, 40, 20);
+		underTest.tick();
+		int disagreeableness = underTest.disagreeableness;
+		Assert.assertEquals(60 + _THIRST_PER_TICK_, disagreeableness);
 	}
 
 	@Test
@@ -305,7 +316,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int boredom = underTest.getBoredom();
-		Assert.assertEquals(21, boredom);
+		Assert.assertEquals(20 + _BOREDOM_PER_TICK_, boredom);
 	}
 
 	@Test
@@ -313,7 +324,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int hunger = underTest.getHunger();
-		Assert.assertEquals(21, hunger);
+		Assert.assertEquals(20 + _HUNGER_PER_TICK_, hunger);
 	}
 
 	@Test
@@ -321,7 +332,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int thirst = underTest.getThirst();
-		Assert.assertEquals(21, thirst);
+		Assert.assertEquals(20 + _THIRST_PER_TICK_, thirst);
 	}
 
 	@Test
