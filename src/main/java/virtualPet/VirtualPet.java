@@ -14,7 +14,7 @@ public class VirtualPet {
 	private int boredom;
 	private String name;
 	private String priority;
-	public int disagreeableness;
+	private int disagreeableness;
 
 	public int getHunger() {
 		return hunger;
@@ -38,6 +38,10 @@ public class VirtualPet {
 
 	public String getPriority() {
 		return priority;
+	}
+
+	public int getDisagreeableness() {
+		return disagreeableness;
 	}
 
 	public VirtualPet(String name, int hunger, int thirst, int waste, int boredom) {
