@@ -52,7 +52,10 @@ public class VirtualPet {
 		if (waste >= 100) {
 			bathroom();
 		}
-		if (hunger > boredom) {
+
+		if (thirst > hunger) {
+			priority = "thirst";
+		} else if (hunger > boredom) {
 			priority = "hunger";
 		} else {
 			priority = "boredom";

@@ -317,18 +317,26 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveTickDeterminePriorityIsBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 20, 40, 60, 80);
+	public void shouldHaveTickDeterminePriorityIsBoredomNotHunger() {
+		VirtualPet underTest = new VirtualPet(null, 60, 0, 0, 80);
 		underTest.tick();
 		String priority = underTest.priority;
 		Assert.assertEquals("boredom", priority);
 	}
 
 	@Test
-	public void shouldHaveTickDeterminePriorityIsHunger() {
-		VirtualPet underTest = new VirtualPet(null, 80, 60, 40, 20);
+	public void shouldHaveTickDeterminePriorityIsHungerNotThirst() {
+		VirtualPet underTest = new VirtualPet(null, 80, 60, 0, 0);
 		underTest.tick();
 		String priority = underTest.priority;
 		Assert.assertEquals("hunger", priority);
+	}
+	
+	@Test
+	public void shouldHaveTickDeterminePriorityIsThirstNotHunger() {
+		VirtualPet underTest = new VirtualPet(null, 60, 80, 0, 0);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("thirst", priority);
 	}
 }
