@@ -74,7 +74,7 @@ public class VirtualPet {
 
 		if (boredom > thirst && boredom > waste) {
 			disagreeableness = boredom;
-		} else if (waste > thirst) {
+		} else if (waste > thirst && waste > hunger) {
 			disagreeableness = waste;
 		} else if (thirst > hunger) {
 			disagreeableness = thirst;
