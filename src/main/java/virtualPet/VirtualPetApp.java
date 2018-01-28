@@ -17,9 +17,9 @@ public class VirtualPetApp {
 
 			System.out.println(name);
 			System.out.println("Hunger:  " + progressBar(hunger));
-			System.out.println("Thirst:  " + thirst);
-			System.out.println("Waste:   " + waste);
-			System.out.println("Boredom: " + boredom);
+			System.out.println("Thirst:  " + progressBar(thirst));
+			System.out.println("Waste:   " + progressBar(waste));
+			System.out.println("Boredom: " + progressBar(boredom));
 			System.out.println();
 			System.out.println("Menu");
 			System.out.println("1. Feed " + name);
