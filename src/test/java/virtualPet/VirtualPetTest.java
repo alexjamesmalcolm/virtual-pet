@@ -212,6 +212,20 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveHasEscapedReturnFalse() {
+		VirtualPet underTest = new VirtualPet();
+		boolean hasEscaped = underTest.hasEscaped();
+		Assert.assertFalse(hasEscaped);
+	}
+
+	@Test
+	public void shouldHaveHasEscapedReturnTrue() {
+		VirtualPet underTest = new VirtualPet(null, 0, 0, 0, 110);
+		boolean hasEscaped = underTest.hasEscaped();
+		Assert.assertTrue(hasEscaped);
+	}
+
+	@Test
 	public void shouldHavePlayDecreaseBoredomWhen10() {
 		int inputBoredom = 10;
 		VirtualPet underTest = new VirtualPet(null, 0, 0, 0, inputBoredom);
@@ -471,19 +485,5 @@ public class VirtualPetTest {
 		underTest.water();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveHasEscapedReturnFalse() {
-		VirtualPet underTest = new VirtualPet();
-		boolean hasEscaped = underTest.hasEscaped();
-		Assert.assertFalse(hasEscaped);
-	}
-
-	@Test
-	public void shouldHaveHasEscapedReturnTrue() {
-		VirtualPet underTest = new VirtualPet(null, 0, 0, 0, 110);
-		boolean hasEscaped = underTest.hasEscaped();
-		Assert.assertTrue(hasEscaped);
 	}
 }
