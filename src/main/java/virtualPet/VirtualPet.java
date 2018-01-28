@@ -174,6 +174,10 @@ public class VirtualPet {
 			waste -= 80;
 		}
 
+		if (disagreeableness >= 80) {
+			return false;
+		}
+
 		return true;
 	}
 

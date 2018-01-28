@@ -618,4 +618,13 @@ public class VirtualPetTest {
 		boolean status = underTest.bathroom();
 		Assert.assertTrue(status);
 	}
+
+	@Test
+	public void shouldHaveBathroomReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotWaste() {
+		int inputWaste = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		boolean status = underTest.bathroom();
+		Assert.assertFalse(status);
+	}
 }
