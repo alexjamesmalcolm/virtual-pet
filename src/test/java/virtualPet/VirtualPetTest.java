@@ -462,4 +462,14 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
 	}
+
+	@Test
+	public void shouldHaveWaterCallBathroom() {
+		int inputWaste = 90;
+		int inputThirst = 80;
+		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
+		underTest.water();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(50, waste);
+	}
 }

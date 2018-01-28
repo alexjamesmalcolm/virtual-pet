@@ -29,6 +29,7 @@ public class VirtualPetApp {
 			System.out.println("5. Do nothing");
 			int option = input.nextInt();
 			// feed, water, play, bathroom
+			myPet.tick();
 			if (option == 1) {
 				myPet.feed();
 			} else if (option == 2) {
@@ -38,8 +39,6 @@ public class VirtualPetApp {
 			} else if (option == 4) {
 				myPet.play();
 			}
-
-			myPet.tick();
 		}
 
 		input.close();
