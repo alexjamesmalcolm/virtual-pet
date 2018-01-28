@@ -16,9 +16,9 @@ public class VirtualPetApp {
 			String name = myPet.getName();
 
 			System.out.println(name);
-			System.out.println("Hunger: " + hunger);
-			System.out.println("Thirst: " + thirst);
-			System.out.println("Waste: " + waste);
+			System.out.println("Hunger:  " + progressBar(hunger));
+			System.out.println("Thirst:  " + thirst);
+			System.out.println("Waste:   " + waste);
 			System.out.println("Boredom: " + boredom);
 			System.out.println();
 			System.out.println("Menu");
@@ -50,6 +50,12 @@ public class VirtualPetApp {
 		}
 		
 		input.close();
+	}
+
+	public static String progressBar(int hunger) {
+		String full = "█";
+		String empty = "░";
+		return "░░░░░░░░░░░░░░░░░░░░";
 	}
 
 }

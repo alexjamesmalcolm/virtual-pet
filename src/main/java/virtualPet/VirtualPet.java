@@ -2,9 +2,9 @@ package virtualPet;
 
 public class VirtualPet {
 
-	public static final int _THIRST_PER_TICK_ = 15;
-	public static final int _HUNGER_PER_TICK_ = 10;
-	public static final int _BOREDOM_PER_TICK_ = 15;
+	public static final int _THIRST_PER_TICK_ = 12;
+	public static final int _HUNGER_PER_TICK_ = 6;
+	public static final int _BOREDOM_PER_TICK_ = 12;
 	public static final int _HUNGER_TO_THIRST_ = 8;
 	public static final int _HUNGER_TO_WASTE_ = 2;
 	public static final int _THIRST_TO_WASTE_ = 2;
