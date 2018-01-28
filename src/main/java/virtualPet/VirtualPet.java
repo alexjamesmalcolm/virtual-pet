@@ -110,6 +110,10 @@ public class VirtualPet {
 	}
 
 	public boolean feed() {
+		if (disagreeableness >= 80 && !priority.equals("hunger")) {
+			return false;
+		}
+
 		if (thirst + hunger / HUNGER_TO_THIRST <= 100) {
 			thirst += hunger / HUNGER_TO_THIRST;
 		} else {
@@ -127,9 +131,6 @@ public class VirtualPet {
 			hunger -= 80;
 		}
 
-		if (disagreeableness >= 80 && !priority.equals("hunger")) {
-			return false;
-		}
 		return true;
 	}
 

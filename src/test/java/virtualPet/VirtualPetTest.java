@@ -524,11 +524,14 @@ public class VirtualPetTest {
 		Assert.assertEquals(inputThirst, disagreeableness);
 	}
 
-	// @Test
-	// public void shouldHaveFeedDisfunctionWhenFalseIsReturned() {
-	// int inputThirst = 90;
-	// VirtualPet underTest = new VirtualPet(null, 0, 90, 0, 0);
-	// underTest.tick();
-	// boolean status
-	// }
+	@Test
+	public void shouldHaveFeedDisfunctionWhenFalseIsReturned() {
+		int inputThirst = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		boolean status = underTest.feed();
+		int hunger = underTest.getHunger();
+		Assert.assertFalse(status);
+		Assert.assertEquals(inputHunger, hunger);
+	}
 }
