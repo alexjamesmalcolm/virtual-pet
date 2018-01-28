@@ -28,11 +28,12 @@ public class VirtualPet {
 		return name;
 	}
 
-	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
+	public VirtualPet(String inputName, int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
 		this.thirst = inputThirst;
 		this.hunger = inputHunger;
 		this.waste = inputWaste;
 		this.boredom = inputBoredom;
+		this.name = inputName;
 	}
 
 	public VirtualPet() {
@@ -40,7 +41,7 @@ public class VirtualPet {
 		hunger = 20;
 		waste = 20;
 		boredom = 20;
-		name = "George";
+		name = "Ramanujan";
 	}
 
 	public void tick() {
