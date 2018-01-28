@@ -41,6 +41,14 @@ public class VirtualPetApp {
 			}
 		}
 
+		if (!myPet.alive()) {
+			System.out.println(myPet.getName() + " has died.");
+		}
+		
+		if(myPet.hasEscaped()) {
+			System.out.println(myPet.getName() + " has left.");
+		}
+		
 		input.close();
 	}
 
