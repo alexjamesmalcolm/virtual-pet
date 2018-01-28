@@ -5,7 +5,10 @@ public class VirtualPet {
 	public static final int _HUNGER_TO_THIRST_ = 8;
 	public static final int _HUNGER_TO_WASTE_ = 2;
 	public static final int _THIRST_TO_WASTE_ = 2;
-	private int hunger, thirst, waste, boredom;
+	private int hunger;
+	private int thirst;
+	private int waste;
+	private int boredom;
 	private String name;
 	public String priority;
 
