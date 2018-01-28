@@ -160,7 +160,7 @@ public class VirtualPet {
 			boredom -= 80;
 		}
 
-		if (disagreeableness >= 80) {
+		if (disagreeableness >= 80 && !priority.equals("boredom")) {
 			return false;
 		}
 

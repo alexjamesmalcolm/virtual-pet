@@ -592,6 +592,15 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsHighButPriorityIsBoredom() {
+		int inputBoredom = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		boolean status = underTest.play();
+		Assert.assertTrue(status);
+	}
+
+	@Test
 	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
 		int inputWaste = 50;
 		int inputHunger = 10;
