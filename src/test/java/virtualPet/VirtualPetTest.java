@@ -291,6 +291,14 @@ public class VirtualPetTest {
 		String priority = underTest.getPriority();
 		Assert.assertEquals("thirst", priority);
 	}
+	
+	@Test
+	public void shouldHaveTickDetermineDisagreeablenessIs80() {
+		VirtualPet underTest = new VirtualPet(null, 80, 60, 40, 20);		
+		underTest.tick();
+		int disagreeableness = underTest.disagreeableness;
+		Assert.assertEquals(80, disagreeableness);
+	}
 
 	@Test
 	public void shouldHaveTickIncreaseBoredom() {
