@@ -134,7 +134,7 @@ public class VirtualPet {
 		return true;
 	}
 
-	public void water() {
+	public boolean water() {
 		if (waste + thirst / THIRST_TO_WASTE >= 100) {
 			bathroom();
 		}
@@ -145,6 +145,8 @@ public class VirtualPet {
 		} else {
 			thirst -= 80;
 		}
+
+		return true;
 	}
 
 	public void play() {

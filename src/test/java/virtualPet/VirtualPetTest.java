@@ -534,4 +534,21 @@ public class VirtualPetTest {
 		Assert.assertFalse(status);
 		Assert.assertEquals(inputHunger, hunger);
 	}
+
+	@Test
+	public void shouldHaveWaterReturnTrueWhenDisagreeablenessIsLow() {
+		int inputThirst = 50;
+		int inputHunger = 10;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		boolean status = underTest.water();
+		Assert.assertTrue(status);
+	}
+
+	@Test
+	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsLow() {
+	}
+
+	@Test
+	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
+	}
 }
