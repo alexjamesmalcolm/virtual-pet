@@ -146,7 +146,7 @@ public class VirtualPet {
 			thirst -= 80;
 		}
 
-		if (disagreeableness >= 80) {
+		if (disagreeableness >= 80 && !priority.equals("thirst")) {
 			return false;
 		}
 
