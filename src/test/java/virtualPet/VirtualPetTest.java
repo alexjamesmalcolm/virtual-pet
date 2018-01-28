@@ -236,6 +236,55 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveTickCallBathroomWhenWasteIsHigh() {
+		int inputWaste = 100;
+		VirtualPet underTest = new VirtualPet(null, 0, 0, inputWaste, 0);
+		underTest.tick();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(20, waste);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityIsBoredomNotHunger() {
+		VirtualPet underTest = new VirtualPet(null, 60, 0, 0, 80);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("boredom", priority);
+	}
+	
+	@Test
+	public void shouldHaveTickDeterminePriorityIsBoredomNotThirst() {
+		VirtualPet underTest = new VirtualPet(null, 0, 60, 0, 80);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("boredom", priority);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityIsHungerNotThirst() {
+		VirtualPet underTest = new VirtualPet(null, 80, 60, 0, 0);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("hunger", priority);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityIsThirstNotBoredom() {
+		VirtualPet underTest = new VirtualPet(null, 0, 80, 0, 60);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("thirst", priority);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityIsThirstNotHunger() {
+		VirtualPet underTest = new VirtualPet(null, 60, 80, 0, 0);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("thirst", priority);
+	}
+
+	@Test
 	public void shouldHaveTickIncreaseBoredom() {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
@@ -305,46 +354,5 @@ public class VirtualPetTest {
 		underTest.water();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveTickCallBathroomWhenWasteIsHigh() {
-		int inputWaste = 100;
-		VirtualPet underTest = new VirtualPet(null, 0, 0, inputWaste, 0);
-		underTest.tick();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(20, waste);
-	}
-
-	@Test
-	public void shouldHaveTickDeterminePriorityIsBoredomNotHunger() {
-		VirtualPet underTest = new VirtualPet(null, 60, 0, 0, 80);
-		underTest.tick();
-		String priority = underTest.priority;
-		Assert.assertEquals("boredom", priority);
-	}
-
-	@Test
-	public void shouldHaveTickDeterminePriorityIsHungerNotThirst() {
-		VirtualPet underTest = new VirtualPet(null, 80, 60, 0, 0);
-		underTest.tick();
-		String priority = underTest.priority;
-		Assert.assertEquals("hunger", priority);
-	}
-
-	@Test
-	public void shouldHaveTickDeterminePriorityIsThirstNotHunger() {
-		VirtualPet underTest = new VirtualPet(null, 60, 80, 0, 0);
-		underTest.tick();
-		String priority = underTest.priority;
-		Assert.assertEquals("thirst", priority);
-	}
-
-	@Test
-	public void shouldHaveTickDeterminePriorityIsThirstNotBoredom() {
-		VirtualPet underTest = new VirtualPet(null, 0, 80, 0, 60);
-		underTest.tick();
-		String priority = underTest.priority;
-		Assert.assertEquals("thirst", priority);
 	}
 }

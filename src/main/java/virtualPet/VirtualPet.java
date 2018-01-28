@@ -53,7 +53,7 @@ public class VirtualPet {
 			bathroom();
 		}
 
-		if (thirst > hunger) {
+		if (thirst > hunger && thirst > boredom) {
 			priority = "thirst";
 		} else if (hunger > boredom) {
 			priority = "hunger";
