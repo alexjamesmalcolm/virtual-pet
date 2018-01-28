@@ -102,13 +102,12 @@ public class VirtualPet {
 			thirst = 100;
 		}
 
-		if (waste + hunger / _HUNGER_TO_WASTE_ <= 100) {
-			waste += hunger / _HUNGER_TO_WASTE_;
-		} else {
-			waste = 100;
+		if (waste + hunger / _HUNGER_TO_WASTE_ >= 100) {
+			bathroom();
 		}
+		waste += hunger / _HUNGER_TO_WASTE_;
 
-		if (getHunger() < 80) {
+		if (hunger < 80) {
 			hunger = 0;
 		} else {
 			hunger -= 80;

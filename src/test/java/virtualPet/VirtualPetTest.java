@@ -78,6 +78,16 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveFeedCallBathroom() {
+		int inputWaste = 90;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		underTest.feed();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(55, waste);
+	}
+
+	@Test
 	public void shouldHaveFeedDecreaseHunger() {
 		VirtualPet underTest = new VirtualPet();
 		underTest.feed();
@@ -155,16 +165,6 @@ public class VirtualPetTest {
 		underTest.feed();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputHunger / _HUNGER_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveFeedNotIncreaseWasteOrDecreaseHungerWhenWasteIs90AndHungerIs90() {
-		int inputHunger = 90;
-		int inputWaste = 90;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
-		underTest.feed();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(100, waste);
 	}
 
 	@Test
@@ -416,6 +416,16 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveWaterCallBathroom() {
+		int inputWaste = 90;
+		int inputThirst = 80;
+		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
+		underTest.water();
+		int waste = underTest.getWaste();
+		Assert.assertEquals(50, waste);
+	}
+
+	@Test
 	public void shouldHaveWaterDecreaseThirst() {
 		int inputThirst = 40;
 		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, 0, 0);
@@ -461,15 +471,5 @@ public class VirtualPetTest {
 		underTest.water();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
-	}
-
-	@Test
-	public void shouldHaveWaterCallBathroom() {
-		int inputWaste = 90;
-		int inputThirst = 80;
-		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
-		underTest.water();
-		int waste = underTest.getWaste();
-		Assert.assertEquals(50, waste);
 	}
 }
