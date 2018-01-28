@@ -146,6 +146,10 @@ public class VirtualPet {
 			thirst -= 80;
 		}
 
+		if (disagreeableness >= 80) {
+			return false;
+		}
+
 		return true;
 	}
 
@@ -155,7 +159,7 @@ public class VirtualPet {
 		} else {
 			boredom -= 80;
 		}
-		
+
 		return true;
 	}
 
@@ -165,7 +169,7 @@ public class VirtualPet {
 		} else {
 			waste -= 80;
 		}
-		
+
 		return true;
 	}
 
