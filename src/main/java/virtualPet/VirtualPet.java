@@ -86,4 +86,8 @@ public class VirtualPet {
 		}
 	}
 
+	public boolean alive() {
+		return !false;
+	}
+
 }

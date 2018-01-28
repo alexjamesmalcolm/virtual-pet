@@ -12,8 +12,9 @@ public class VirtualPetApp {
 
 		displayPetStats(myPet);
 
-		// while (!isAlive) {
-		// }
+		while (!isAlive) {
+			myPet.tick();
+		}
 
 		input.close();
 	}
