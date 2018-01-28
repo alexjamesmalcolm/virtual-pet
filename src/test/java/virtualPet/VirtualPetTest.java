@@ -268,14 +268,14 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
 	}
-	
+
 	@Test
 	public void shouldHaveAliveReturnTrue() {
 		VirtualPet underTest = new VirtualPet();
 		boolean alive = underTest.alive();
 		Assert.assertTrue(alive);
 	}
-	
+
 	@Test
 	public void shouldHaveAliveReturnFalseWhenHungerIs100() {
 		int inputHunger = 100;
@@ -283,7 +283,12 @@ public class VirtualPetTest {
 		boolean alive = underTest.alive();
 		Assert.assertFalse(alive);
 	}
-	
+
 	@Test
-	public void shouldHaveAliveReturnFalseWhenThirstIs100() {}
+	public void shouldHaveAliveReturnFalseWhenThirstIs100() {
+		int inputThirst = 100;
+		VirtualPet underTest = new VirtualPet(0, inputThirst, 0, 0);
+		boolean alive = underTest.alive();
+		Assert.assertFalse(alive);
+	}
 }
