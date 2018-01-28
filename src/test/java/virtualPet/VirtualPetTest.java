@@ -555,5 +555,10 @@ public class VirtualPetTest {
 
 	@Test
 	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
+		int inputWaste = 50;
+		int inputHunger = 10;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		boolean status = underTest.bathroom();
+		Assert.assertTrue(status);
 	}
 }

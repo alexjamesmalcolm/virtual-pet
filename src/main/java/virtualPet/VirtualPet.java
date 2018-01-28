@@ -159,12 +159,14 @@ public class VirtualPet {
 		return true;
 	}
 
-	public void bathroom() {
+	public boolean bathroom() {
 		if (waste - 80 < 0) {
 			waste = 0;
 		} else {
 			waste -= 80;
 		}
+		
+		return true;
 	}
 
 	public boolean alive() {
