@@ -6,6 +6,7 @@ public class VirtualPet {
 	public static final int _HUNGER_TO_WASTE_ = 2;
 	public static final int _THIRST_TO_WASTE_ = 2;
 	private int hunger, thirst, waste, boredom;
+	private String name;
 
 	public int getHunger() {
 		return hunger;
@@ -23,6 +24,10 @@ public class VirtualPet {
 		return boredom;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public VirtualPet(int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
 		this.thirst = inputThirst;
 		this.hunger = inputHunger;
@@ -35,6 +40,7 @@ public class VirtualPet {
 		hunger = 20;
 		waste = 20;
 		boredom = 20;
+		name = "George";
 	}
 
 	public void tick() {

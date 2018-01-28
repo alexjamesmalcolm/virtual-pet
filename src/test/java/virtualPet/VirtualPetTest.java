@@ -291,4 +291,11 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
 	}
+	
+	@Test
+	public void shouldHaveGetNameReturnGeorge() {
+		VirtualPet underTest = new VirtualPet();
+		String name = underTest.getName();
+		Assert.assertEquals("George", name);
+	}
 }
