@@ -135,6 +135,10 @@ public class VirtualPet {
 	}
 
 	public boolean water() {
+		if (disagreeableness >= 80 && !priority.equals("thirst")) {
+			return false;
+		}
+
 		if (waste + thirst / THIRST_TO_WASTE >= 100) {
 			bathroom();
 		}
@@ -144,10 +148,6 @@ public class VirtualPet {
 			thirst = 0;
 		} else {
 			thirst -= 80;
-		}
-
-		if (disagreeableness >= 80 && !priority.equals("thirst")) {
-			return false;
 		}
 
 		return true;
