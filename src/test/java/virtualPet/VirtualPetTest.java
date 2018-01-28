@@ -323,4 +323,12 @@ public class VirtualPetTest {
 		String priority = underTest.priority;
 		Assert.assertEquals("boredom", priority);
 	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityIsHunger() {
+		VirtualPet underTest = new VirtualPet(null, 80, 60, 40, 20);
+		underTest.tick();
+		String priority = underTest.priority;
+		Assert.assertEquals("hunger", priority);
+	}
 }

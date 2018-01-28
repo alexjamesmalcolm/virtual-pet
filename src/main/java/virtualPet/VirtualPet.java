@@ -29,12 +29,12 @@ public class VirtualPet {
 		return name;
 	}
 
-	public VirtualPet(String inputName, int inputHunger, int inputThirst, int inputWaste, int inputBoredom) {
-		this.thirst = inputThirst;
-		this.hunger = inputHunger;
-		this.waste = inputWaste;
-		this.boredom = inputBoredom;
-		this.name = inputName;
+	public VirtualPet(String name, int hunger, int thirst, int waste, int boredom) {
+		this.thirst = thirst;
+		this.hunger = hunger;
+		this.waste = waste;
+		this.boredom = boredom;
+		this.name = name;
 	}
 
 	public VirtualPet() {
@@ -52,7 +52,11 @@ public class VirtualPet {
 		if (waste >= 100) {
 			bathroom();
 		}
-		priority = "boredom";
+		if (hunger > boredom) {
+			priority = "hunger";
+		} else {
+			priority = "boredom";
+		}
 	}
 
 	public void feed() {
