@@ -155,4 +155,8 @@ public class VirtualPet {
 		return true;
 	}
 
+	public boolean hasEscaped() {
+		return false;
+	}
+
 }
