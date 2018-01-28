@@ -160,6 +160,10 @@ public class VirtualPet {
 			boredom -= 80;
 		}
 
+		if (disagreeableness >= 80) {
+			return false;
+		}
+
 		return true;
 	}
 
