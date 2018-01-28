@@ -50,6 +50,8 @@ public class VirtualPet {
 		this.waste = waste;
 		this.boredom = boredom;
 		this.name = name;
+		determinePriority();
+		determineDisagreeableness();
 	}
 
 	public VirtualPet() {
@@ -58,6 +60,8 @@ public class VirtualPet {
 		waste = 20;
 		boredom = 20;
 		name = "Ramanujan";
+		determinePriority();
+		determineDisagreeableness();
 	}
 
 	public VirtualPet(String name) {
@@ -66,6 +70,8 @@ public class VirtualPet {
 		waste = 20;
 		boredom = 20;
 		this.name = name;
+		determinePriority();
+		determineDisagreeableness();
 	}
 
 	public void tick() {

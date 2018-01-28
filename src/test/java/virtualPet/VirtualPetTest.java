@@ -515,4 +515,20 @@ public class VirtualPetTest {
 		boolean status = underTest.feed();
 		Assert.assertTrue(status);
 	}
+
+	@Test
+	public void shouldHaveDisagreeablenessHigh() {
+		int inputThirst = 90;
+		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, 0, 0);
+		int disagreeableness = underTest.getDisagreeableness();
+		Assert.assertEquals(inputThirst, disagreeableness);
+	}
+
+	// @Test
+	// public void shouldHaveFeedDisfunctionWhenFalseIsReturned() {
+	// int inputThirst = 90;
+	// VirtualPet underTest = new VirtualPet(null, 0, 90, 0, 0);
+	// underTest.tick();
+	// boolean status
+	// }
 }
