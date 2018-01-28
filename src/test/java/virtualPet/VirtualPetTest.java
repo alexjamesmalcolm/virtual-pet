@@ -179,6 +179,21 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveGetNameReturnGeorge() {
+		String inputName = "George";
+		VirtualPet  underTest = new VirtualPet(inputName, 0, 0, 0, 0);
+		String name = underTest.getName();
+		Assert.assertEquals(inputName, name);
+	}
+
+	@Test
+	public void shouldHaveGetNameReturnRamanujan() {
+		VirtualPet underTest = new VirtualPet();
+		String name = underTest.getName();
+		Assert.assertEquals("Ramanujan", name);
+	}
+
+	@Test
 	public void shouldHaveGetThirstReturnThirst() {
 		VirtualPet underTest = new VirtualPet();
 		int thirst = underTest.getThirst();
@@ -271,7 +286,7 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputThirst / _THIRST_TO_WASTE_, waste);
 	}
-
+	
 	@Test
 	public void shouldHaveWaterIncreaseWasteWhenThirstIs100() {
 		int inputThirst = 100;
@@ -281,7 +296,7 @@ public class VirtualPetTest {
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputThirst / _THIRST_TO_WASTE_, waste);
 	}
-
+	
 	@Test
 	public void shouldHaveWaterIncreaseWasteWhenThirstIs10AndWasteIs40() {
 		int inputThirst = 10;
@@ -290,20 +305,5 @@ public class VirtualPetTest {
 		underTest.water();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
-	}
-	
-	@Test
-	public void shouldHaveGetNameReturnRamanujan() {
-		VirtualPet underTest = new VirtualPet();
-		String name = underTest.getName();
-		Assert.assertEquals("Ramanujan", name);
-	}
-	
-	@Test
-	public void shouldHaveGetNameReturnGeorge() {
-		String inputName = "George";
-		VirtualPet  underTest = new VirtualPet(inputName, 0, 0, 0, 0);
-		String name = underTest.getName();
-		Assert.assertEquals(inputName, name);
 	}
 }
