@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 
-	private static final int _THIRST_PER_TICK_ = VirtualPet.THIRST_PER_TICK;
-	private static final int _HUNGER_PER_TICK_ = VirtualPet.HUNGER_PER_TICK;
-	private static final int _BOREDOM_PER_TICK_ = VirtualPet.BOREDOM_PER_TICK;
-	private static final int _HUNGER_TO_THIRST_ = VirtualPet.HUNGER_TO_THIRST;
-	private static final int _HUNGER_TO_WASTE_ = VirtualPet.HUNGER_TO_WASTE;
-	private static final int _THIRST_TO_WASTE_ = VirtualPet.THIRST_TO_WASTE;
+	private static final int THIRST_PER_TICK = VirtualPet.THIRST_PER_TICK;
+	private static final int HUNGER_PER_TICK = VirtualPet.HUNGER_PER_TICK;
+	private static final int BOREDOM_PER_TICK = VirtualPet.BOREDOM_PER_TICK;
+	private static final int HUNGER_TO_THIRST = VirtualPet.HUNGER_TO_THIRST;
+	private static final int HUNGER_TO_WASTE = VirtualPet.HUNGER_TO_WASTE;
+	private static final int THIRST_TO_WASTE = VirtualPet.THIRST_TO_WASTE;
 
 	@Test
 	public void shouldAcceptCustomAttributes() {
@@ -103,7 +103,7 @@ public class VirtualPetTest {
 		underTest.feed();
 		int thirst = underTest.getThirst();
 		int hunger = underTest.getHunger();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+		Assert.assertEquals(inputHunger / HUNGER_TO_THIRST, thirst);
 		Assert.assertEquals(20, hunger);
 	}
 
@@ -114,7 +114,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
 		underTest.feed();
 		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+		Assert.assertEquals(inputHunger / HUNGER_TO_THIRST, thirst);
 	}
 
 	@Test
@@ -124,7 +124,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
 		underTest.feed();
 		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_THIRST_, thirst);
+		Assert.assertEquals(inputHunger / HUNGER_TO_THIRST, thirst);
 	}
 
 	@Test
@@ -134,7 +134,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
 		underTest.feed();
 		int thirst = underTest.getThirst();
-		Assert.assertEquals(inputThirst + inputHunger / _HUNGER_TO_THIRST_, thirst);
+		Assert.assertEquals(inputThirst + inputHunger / HUNGER_TO_THIRST, thirst);
 	}
 
 	@Test
@@ -154,7 +154,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
 		underTest.feed();
 		int waste = underTest.getWaste();
-		Assert.assertEquals(inputHunger / _HUNGER_TO_WASTE_, waste);
+		Assert.assertEquals(inputHunger / HUNGER_TO_WASTE, waste);
 	}
 
 	@Test
@@ -164,7 +164,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
 		underTest.feed();
 		int waste = underTest.getWaste();
-		Assert.assertEquals(inputWaste + inputHunger / _HUNGER_TO_WASTE_, waste);
+		Assert.assertEquals(inputWaste + inputHunger / HUNGER_TO_WASTE, waste);
 	}
 
 	@Test
@@ -266,7 +266,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 40, 0, 0, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + BOREDOM_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -274,7 +274,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, 40, 0, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + BOREDOM_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -282,7 +282,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, 0, 40, 80);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _BOREDOM_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + BOREDOM_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -290,7 +290,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 80, 0, 0, 40);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + HUNGER_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -298,7 +298,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 80, 40, 0, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + HUNGER_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -306,7 +306,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 80, 0, 40, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _HUNGER_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + HUNGER_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -314,7 +314,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, 80, 0, 40);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + THIRST_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -322,7 +322,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 40, 80, 0, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + THIRST_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -330,7 +330,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, 80, 40, 0);
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(80 + _THIRST_PER_TICK_, disagreeableness);
+		Assert.assertEquals(80 + THIRST_PER_TICK, disagreeableness);
 	}
 
 	@Test
@@ -410,7 +410,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int boredom = underTest.getBoredom();
-		Assert.assertEquals(20 + _BOREDOM_PER_TICK_, boredom);
+		Assert.assertEquals(20 + BOREDOM_PER_TICK, boredom);
 	}
 
 	@Test
@@ -418,7 +418,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int hunger = underTest.getHunger();
-		Assert.assertEquals(20 + _HUNGER_PER_TICK_, hunger);
+		Assert.assertEquals(20 + HUNGER_PER_TICK, hunger);
 	}
 
 	@Test
@@ -426,7 +426,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet();
 		underTest.tick();
 		int thirst = underTest.getThirst();
-		Assert.assertEquals(20 + _THIRST_PER_TICK_, thirst);
+		Assert.assertEquals(20 + THIRST_PER_TICK, thirst);
 	}
 
 	@Test
@@ -464,7 +464,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
 		underTest.water();
 		int waste = underTest.getWaste();
-		Assert.assertEquals(inputThirst / _THIRST_TO_WASTE_, waste);
+		Assert.assertEquals(inputThirst / THIRST_TO_WASTE, waste);
 	}
 
 	@Test
@@ -474,7 +474,7 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
 		underTest.water();
 		int waste = underTest.getWaste();
-		Assert.assertEquals(inputThirst / _THIRST_TO_WASTE_, waste);
+		Assert.assertEquals(inputThirst / THIRST_TO_WASTE, waste);
 	}
 
 	@Test
@@ -484,6 +484,6 @@ public class VirtualPetTest {
 		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, inputWaste, 0);
 		underTest.water();
 		int waste = underTest.getWaste();
-		Assert.assertEquals(inputWaste + inputThirst / _THIRST_TO_WASTE_, waste);
+		Assert.assertEquals(inputWaste + inputThirst / THIRST_TO_WASTE, waste);
 	}
 }
