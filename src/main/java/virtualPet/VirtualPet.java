@@ -61,6 +61,10 @@ public class VirtualPet {
 	}
 
 	public VirtualPet(String name) {
+		thirst = 20;
+		hunger = 20;
+		waste = 20;
+		boredom = 20;
 		this.name = name;
 	}
 
