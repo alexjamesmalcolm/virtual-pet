@@ -170,7 +170,6 @@ public class VirtualPet {
 		return true;
 	}
 
-	// shouldHaveBathroomReturnTrueWhenDisagreeablenessIsHighButPriorityIsWaste
 	public boolean bathroom() {
 		if (waste - 80 < 0) {
 			waste = 0;
