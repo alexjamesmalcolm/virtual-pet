@@ -72,20 +72,24 @@ public class VirtualPetApp {
 		String name = pet.getName();
 		if (option == 1) {
 			status = pet.feed();
-			if (status)
+			if (status) {
 				System.out.println("You feed " + name + ".");
+			}
 		} else if (option == 2) {
 			status = pet.water();
-			if (status)
+			if (status) {
 				System.out.println("You refill " + name + "'s water.");
+			}
 		} else if (option == 3) {
 			status = pet.bathroom();
-			if (status)
+			if (status) {
 				System.out.println("You let " + name + " out to go to the bathroom.");
+			}
 		} else if (option == 4) {
 			status = pet.play();
-			if (status)
+			if (status) {
 				System.out.println("You play with " + name + ".");
+			}
 		} else if (option == 6) {
 			System.out.println("Have a nice day!\n\n\n\n\n\n\n\n\n\n\n\n");
 			input.close();
