@@ -78,6 +78,41 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveBathroomReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotWaste() {
+		int inputWaste = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		boolean status = underTest.bathroom();
+		Assert.assertFalse(status);
+	}
+
+	@Test
+	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsHighButPriorityIsWaste() {
+		int inputWaste = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		boolean status = underTest.bathroom();
+		Assert.assertEquals(true, status);
+	}
+
+	@Test
+	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
+		int inputWaste = 50;
+		int inputHunger = 10;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
+		boolean status = underTest.bathroom();
+		Assert.assertTrue(status);
+	}
+
+	@Test
+	public void shouldHaveDisagreeablenessHigh() {
+		int inputThirst = 90;
+		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, 0, 0);
+		int disagreeableness = underTest.getDisagreeableness();
+		Assert.assertEquals(inputThirst, disagreeableness);
+	}
+
+	@Test
 	public void shouldHaveFeedCallBathroom() {
 		int inputWaste = 90;
 		int inputHunger = 91;
@@ -93,6 +128,17 @@ public class VirtualPetTest {
 		underTest.feed();
 		int hunger = underTest.getHunger();
 		Assert.assertEquals(0, hunger);
+	}
+
+	@Test
+	public void shouldHaveFeedDisfunctionWhenFalseIsReturned() {
+		int inputThirst = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		boolean status = underTest.feed();
+		int hunger = underTest.getHunger();
+		Assert.assertFalse(status);
+		Assert.assertEquals(inputHunger, hunger);
 	}
 
 	@Test
@@ -165,6 +211,35 @@ public class VirtualPetTest {
 		underTest.feed();
 		int waste = underTest.getWaste();
 		Assert.assertEquals(inputWaste + inputHunger / HUNGER_TO_WASTE, waste);
+	}
+
+	@Test
+	public void shouldHaveFeedReturnFalseWhenDisagreeablenessIsHighAndPriorityIsThirst() {
+		int inputThirst = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertFalse(status);
+	}
+
+	@Test
+	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsHighButPriorityIsHunger() {
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertTrue(status);
+	}
+
+	@Test
+	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsLow() {
+		int inputThirst = 10;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		underTest.tick();
+		boolean status = underTest.feed();
+		Assert.assertTrue(status);
 	}
 
 	@Test
@@ -250,6 +325,43 @@ public class VirtualPetTest {
 		underTest.play();
 		int boredom = underTest.getBoredom();
 		Assert.assertEquals(10, boredom);
+	}
+
+	@Test
+	public void shouldHavePlayDisfunctionWhenFalseIsReturned() {
+		int inputBoredom = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		underTest.play();
+		int boredom = underTest.getBoredom();
+		Assert.assertEquals(inputBoredom, boredom);
+	}
+
+	@Test
+	public void shouldHavePlayReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotBoredom() {
+		int inputBoredom = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		boolean status = underTest.play();
+		Assert.assertFalse(status);
+	}
+
+	@Test
+	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsHighButPriorityIsBoredom() {
+		int inputBoredom = 90;
+		int inputHunger = 50;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		boolean status = underTest.play();
+		Assert.assertTrue(status);
+	}
+
+	@Test
+	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsLow() {
+		int inputBoredom = 50;
+		int inputHunger = 10;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
+		boolean status = underTest.play();
+		Assert.assertTrue(status);
 	}
 
 	@Test
@@ -342,14 +454,6 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveTickDeterminePriorityByWasteInsteadHunger() {
-		VirtualPet underTest = new VirtualPet(null, 40, 0, 80, 40);
-		underTest.tick();
-		String priority = underTest.getPriority();
-		Assert.assertEquals("waste", priority);
-	}
-
-	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByWasteInsteadHunger() {
 		VirtualPet underTest = new VirtualPet(null, 40, 0, 80, 0);
 		underTest.tick();
@@ -363,6 +467,14 @@ public class VirtualPetTest {
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80, disagreeableness);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityByWasteInsteadHunger() {
+		VirtualPet underTest = new VirtualPet(null, 40, 0, 80, 40);
+		underTest.tick();
+		String priority = underTest.getPriority();
+		Assert.assertEquals("waste", priority);
 	}
 
 	@Test
@@ -474,6 +586,17 @@ public class VirtualPetTest {
 	}
 
 	@Test
+	public void shouldHaveWaterDisfunctionWhenFalseIsReturned() {
+		int inputThirst = 50;
+		int inputHunger = 90;
+		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
+		boolean status = underTest.water();
+		int thirst = underTest.getThirst();
+		Assert.assertFalse(status);
+		Assert.assertEquals(inputThirst, thirst);
+	}
+
+	@Test
 	public void shouldHaveWaterIncreaseWasteWhenThirstIs10() {
 		int inputThirst = 10;
 		int inputWaste = 0;
@@ -504,63 +627,6 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveFeedReturnFalseWhenDisagreeablenessIsHighAndPriorityIsThirst() {
-		int inputThirst = 90;
-		int inputHunger = 50;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
-		underTest.tick();
-		boolean status = underTest.feed();
-		Assert.assertFalse(status);
-	}
-
-	@Test
-	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsLow() {
-		int inputThirst = 10;
-		int inputHunger = 50;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
-		underTest.tick();
-		boolean status = underTest.feed();
-		Assert.assertTrue(status);
-	}
-
-	@Test
-	public void shouldHaveFeedReturnTrueWhenDisagreeablenessIsHighButPriorityIsHunger() {
-		int inputHunger = 90;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, 0);
-		underTest.tick();
-		boolean status = underTest.feed();
-		Assert.assertTrue(status);
-	}
-
-	@Test
-	public void shouldHaveDisagreeablenessHigh() {
-		int inputThirst = 90;
-		VirtualPet underTest = new VirtualPet(null, 0, inputThirst, 0, 0);
-		int disagreeableness = underTest.getDisagreeableness();
-		Assert.assertEquals(inputThirst, disagreeableness);
-	}
-
-	@Test
-	public void shouldHaveFeedDisfunctionWhenFalseIsReturned() {
-		int inputThirst = 90;
-		int inputHunger = 50;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
-		boolean status = underTest.feed();
-		int hunger = underTest.getHunger();
-		Assert.assertFalse(status);
-		Assert.assertEquals(inputHunger, hunger);
-	}
-
-	@Test
-	public void shouldHaveWaterReturnTrueWhenDisagreeablenessIsLow() {
-		int inputThirst = 50;
-		int inputHunger = 10;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
-		boolean status = underTest.water();
-		Assert.assertTrue(status);
-	}
-
-	@Test
 	public void shouldHaveWaterReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotThirst() {
 		int inputHunger = 90;
 		int inputThirst = 50;
@@ -579,77 +645,11 @@ public class VirtualPetTest {
 	}
 
 	@Test
-	public void shouldHaveWaterDisfunctionWhenFalseIsReturned() {
+	public void shouldHaveWaterReturnTrueWhenDisagreeablenessIsLow() {
 		int inputThirst = 50;
-		int inputHunger = 90;
+		int inputHunger = 10;
 		VirtualPet underTest = new VirtualPet(null, inputHunger, inputThirst, 0, 0);
 		boolean status = underTest.water();
-		int thirst = underTest.getThirst();
-		Assert.assertFalse(status);
-		Assert.assertEquals(inputThirst, thirst);
-	}
-
-	@Test
-	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsLow() {
-		int inputBoredom = 50;
-		int inputHunger = 10;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
-		boolean status = underTest.play();
 		Assert.assertTrue(status);
-	}
-
-	@Test
-	public void shouldHavePlayReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotBoredom() {
-		int inputBoredom = 50;
-		int inputHunger = 90;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
-		boolean status = underTest.play();
-		Assert.assertFalse(status);
-	}
-
-	@Test
-	public void shouldHavePlayReturnTrueWhenDisagreeablenessIsHighButPriorityIsBoredom() {
-		int inputBoredom = 90;
-		int inputHunger = 50;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
-		boolean status = underTest.play();
-		Assert.assertTrue(status);
-	}
-
-	@Test
-	public void shouldHavePlayDisfunctionWhenFalseIsReturned() {
-		int inputBoredom = 50;
-		int inputHunger = 90;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, 0, inputBoredom);
-		underTest.play();
-		int boredom = underTest.getBoredom();
-		Assert.assertEquals(inputBoredom, boredom);
-	}
-
-	@Test
-	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsLow() {
-		int inputWaste = 50;
-		int inputHunger = 10;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
-		boolean status = underTest.bathroom();
-		Assert.assertTrue(status);
-	}
-
-	@Test
-	public void shouldHaveBathroomReturnFalseWhenDisagreeablenessIsHighAndPriorityIsNotWaste() {
-		int inputWaste = 50;
-		int inputHunger = 90;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
-		boolean status = underTest.bathroom();
-		Assert.assertFalse(status);
-	}
-
-	@Test
-	public void shouldHaveBathroomReturnTrueWhenDisagreeablenessIsHighButPriorityIsWaste() {
-		int inputWaste = 90;
-		int inputHunger = 50;
-		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
-		boolean status = underTest.bathroom();
-		Assert.assertEquals(true, status);
 	}
 }
