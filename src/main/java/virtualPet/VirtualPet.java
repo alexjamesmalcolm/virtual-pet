@@ -14,7 +14,7 @@ public class VirtualPet {
 	private int boredom;
 	private String name;
 	private String priority;
-	private int disagreeableness;
+	private int stubbornness;
 
 	public int getHunger() {
 		return hunger;
@@ -40,8 +40,8 @@ public class VirtualPet {
 		return priority;
 	}
 
-	public int getDisagreeableness() {
-		return disagreeableness;
+	public int getStubbornness() {
+		return stubbornness;
 	}
 
 	public VirtualPet(String name, int hunger, int thirst, int waste, int boredom) {
@@ -50,8 +50,8 @@ public class VirtualPet {
 		this.waste = waste;
 		this.boredom = boredom;
 		this.name = name;
-		determinePriority();
-		determineDisagreeableness();
+		decidePriority();
+		decideStubbornness();
 	}
 
 	public VirtualPet() {
@@ -60,8 +60,8 @@ public class VirtualPet {
 		waste = 20;
 		boredom = 20;
 		name = "Ramanujan";
-		determinePriority();
-		determineDisagreeableness();
+		decidePriority();
+		decideStubbornness();
 	}
 
 	public VirtualPet(String name) {
@@ -70,8 +70,8 @@ public class VirtualPet {
 		waste = 20;
 		boredom = 20;
 		this.name = name;
-		determinePriority();
-		determineDisagreeableness();
+		decidePriority();
+		decideStubbornness();
 	}
 
 	public void tick() {
@@ -82,13 +82,13 @@ public class VirtualPet {
 			bathroom();
 		}
 
-		determinePriority();
+		decidePriority();
 
-		determineDisagreeableness();
+		decideStubbornness();
 	}
 
 	// shouldHaveTickDeterminePriorityIsWasteNotBoredom
-	private void determinePriority() {
+	private void decidePriority() {
 		if (thirst > hunger && thirst > boredom) {
 			priority = "thirst";
 		} else if (hunger > boredom && hunger > waste) {
@@ -100,20 +100,20 @@ public class VirtualPet {
 		}
 	}
 
-	private void determineDisagreeableness() {
+	private void decideStubbornness() {
 		if (boredom > thirst && boredom > waste && boredom > hunger) {
-			disagreeableness = boredom;
+			stubbornness = boredom;
 		} else if (waste > thirst && waste > hunger) {
-			disagreeableness = waste;
+			stubbornness = waste;
 		} else if (thirst > hunger) {
-			disagreeableness = thirst;
+			stubbornness = thirst;
 		} else {
-			disagreeableness = hunger;
+			stubbornness = hunger;
 		}
 	}
 
 	public boolean feed() {
-		if (disagreeableness >= 80 && !priority.equals("hunger")) {
+		if (stubbornness >= 80 && !priority.equals("hunger")) {
 			return false;
 		}
 
@@ -138,7 +138,7 @@ public class VirtualPet {
 	}
 
 	public boolean water() {
-		if (disagreeableness >= 80 && !priority.equals("thirst")) {
+		if (stubbornness >= 80 && !priority.equals("thirst")) {
 			return false;
 		}
 
@@ -157,7 +157,7 @@ public class VirtualPet {
 	}
 
 	public boolean play() {
-		if (disagreeableness >= 80 && !priority.equals("boredom")) {
+		if (stubbornness >= 80 && !priority.equals("boredom")) {
 			return false;
 		}
 
@@ -177,7 +177,7 @@ public class VirtualPet {
 			waste -= 80;
 		}
 
-		if (disagreeableness >= 80 && !priority.equals("waste")) {
+		if (stubbornness >= 80 && !priority.equals("waste")) {
 			return false;
 		}
 
@@ -206,7 +206,7 @@ public class VirtualPet {
 	@Override
 	public String toString() {
 		return "Name: " + name + ", Hunger: " + hunger + ", Thirst: " + thirst + ", Waste: " + waste + ", Boredom: "
-				+ boredom + ", Priority: " + priority + ", Disagreeableness: " + disagreeableness;
+				+ boredom + ", Priority: " + priority + ", Disagreeableness: " + stubbornness;
 	}
 
 }
