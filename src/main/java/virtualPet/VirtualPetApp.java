@@ -89,6 +89,7 @@ public class VirtualPetApp {
 		} else if (option == 5) {
 			System.out.println("You do nothing.");
 		} else if (option == 6) {
+			System.out.println("Have a nice day!\n\n\n\n\n\n\n\n\n\n\n\n");
 			input.close();
 			System.exit(0);
 		}
