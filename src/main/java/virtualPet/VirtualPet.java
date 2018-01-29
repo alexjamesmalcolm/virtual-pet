@@ -91,7 +91,7 @@ public class VirtualPet {
 	private void determinePriority() {
 		if (thirst > hunger && thirst > boredom) {
 			priority = "thirst";
-		} else if (hunger > boredom) {
+		} else if (hunger > boredom && hunger > waste) {
 			priority = "hunger";
 		} else if (boredom > waste) {
 			priority = "boredom";

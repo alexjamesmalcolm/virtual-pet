@@ -80,7 +80,7 @@ public class VirtualPetTest {
 	@Test
 	public void shouldHaveFeedCallBathroom() {
 		int inputWaste = 90;
-		int inputHunger = 90;
+		int inputHunger = 91;
 		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
 		underTest.feed();
 		int waste = underTest.getWaste();
@@ -284,8 +284,6 @@ public class VirtualPetTest {
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80 + BOREDOM_PER_TICK, disagreeableness);
 	}
-	
-	
 
 	@Test
 	public void shouldHaveTickDetermineDisagreeablenessByHungerInsteadBoredom() {
@@ -341,6 +339,14 @@ public class VirtualPetTest {
 		underTest.tick();
 		int disagreeableness = underTest.getDisagreeableness();
 		Assert.assertEquals(80, disagreeableness);
+	}
+
+	@Test
+	public void shouldHaveTickDeterminePriorityByWasteInsteadHunger() {
+		VirtualPet underTest = new VirtualPet(null, 40, 0, 80, 40);
+		underTest.tick();
+		String priority = underTest.getPriority();
+		Assert.assertEquals("waste", priority);
 	}
 
 	@Test
@@ -406,7 +412,7 @@ public class VirtualPetTest {
 		String priority = underTest.getPriority();
 		Assert.assertEquals("thirst", priority);
 	}
-	
+
 	@Test
 	public void shouldHaveTickDeterminePriorityIsWasteNotBoredom() {
 		VirtualPet underTest = new VirtualPet(null, 0, 0, 80, 60);
@@ -644,7 +650,6 @@ public class VirtualPetTest {
 		int inputHunger = 50;
 		VirtualPet underTest = new VirtualPet(null, inputHunger, 0, inputWaste, 0);
 		boolean status = underTest.bathroom();
-		System.out.println(underTest);
-		Assert.assertTrue(status);
+		Assert.assertEquals(true, status);
 	}
 }
