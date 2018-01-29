@@ -65,19 +65,36 @@ public class VirtualPetApp {
 		System.out.println();
 
 		int option = requestAction(input, pet);
+		boolean status = true;
 
 		pet.tick();
+
+		String name = pet.getName();
 		if (option == 1) {
-			pet.feed();
+			status = pet.feed();
+			if (status)
+				System.out.println("You feed " + name + ".");
 		} else if (option == 2) {
-			pet.water();
+			status = pet.water();
+			if (status)
+				System.out.println("You refill " + name + "'s water.");
 		} else if (option == 3) {
-			pet.bathroom();
+			status = pet.bathroom();
+			if (status)
+				System.out.println("You let " + name + " out to go to the bathroom.");
 		} else if (option == 4) {
-			pet.play();
+			status = pet.play();
+			if (status)
+				System.out.println("You play with " + name + ".");
+		} else if (option == 5) {
+			System.out.println("You do nothing.");
 		} else if (option == 6) {
 			input.close();
 			System.exit(0);
+		}
+
+		if (!status) {
+			System.out.println(pet.getName() + " is not cooperating.");
 		}
 	}
 
