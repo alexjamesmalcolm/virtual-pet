@@ -87,13 +87,16 @@ public class VirtualPet {
 		determineDisagreeableness();
 	}
 
+	// shouldHaveTickDeterminePriorityIsWasteNotBoredom
 	private void determinePriority() {
 		if (thirst > hunger && thirst > boredom) {
 			priority = "thirst";
 		} else if (hunger > boredom) {
 			priority = "hunger";
-		} else {
+		} else if (boredom > waste) {
 			priority = "boredom";
+		} else {
+			priority = "waste";
 		}
 	}
 
@@ -167,6 +170,7 @@ public class VirtualPet {
 		return true;
 	}
 
+	// shouldHaveBathroomReturnTrueWhenDisagreeablenessIsHighButPriorityIsWaste
 	public boolean bathroom() {
 		if (waste - 80 < 0) {
 			waste = 0;
@@ -174,7 +178,7 @@ public class VirtualPet {
 			waste -= 80;
 		}
 
-		if (disagreeableness >= 80) {
+		if (disagreeableness >= 80 && !priority.equals("waste")) {
 			return false;
 		}
 
@@ -198,6 +202,12 @@ public class VirtualPet {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "Name: " + name + ", Hunger: " + hunger + ", Thirst: " + thirst + ", Waste: " + waste + ", Boredom: "
+				+ boredom + ", Priority: " + priority + ", Disagreeableness: " + disagreeableness;
 	}
 
 }
